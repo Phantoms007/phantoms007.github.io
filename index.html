@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/111/">111</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/111/">111</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
                     </div>
                 </section>
                 
@@ -260,6 +260,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-LNMP搭建-Linux搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/28/LNMP搭建-Linux搭建/" class="article-date">
+      <time datetime="2019-03-27T16:22:07.000Z" itemprop="datePublished">2019-03-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/LNMP搭建-Linux搭建/">LNMP搭建_Linux搭建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-虚拟机安装centos" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -294,17 +349,30 @@
 <li>虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择;</li>
 <li>镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;</li>
 </ol>
-<h3 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h3><ol>
-<li>为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2;</li>
-<li>打开虚拟机，新建虚拟机，典型 -&gt; 选择新建一个空白硬盘 -&gt; 选择Linux系统，版本选择Centos 64位 -&gt; 安装位置选择刚刚新建的文件夹 centos7.2 -&gt; 磁盘大小默认20G即可，选择将虚拟磁盘存储为单个文件</li>
-<li>自定义硬件：内存：内存默认1G,但在搭建LNMP环境的时候，为了提高编译安装的速度，可以根据自己物理机内存多划分点给虚拟机，8G物理机可以划分3G左右。<pre><code>处理器；1核即可；
+<h3 id="开始安装-VM虚拟机"><a href="#开始安装-VM虚拟机" class="headerlink" title="开始安装 VM虚拟机"></a>开始安装 VM虚拟机</h3><ol>
+<li><p>为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2;</p>
+</li>
+<li><p>打开虚拟机，新建虚拟机，典型 -&gt; 选择新建一个空白硬盘 -&gt; 选择Linux系统，版本选择Centos 64位 -&gt; 安装位置选择刚刚新建的文件夹 centos7.2 -&gt; 磁盘大小默认20G即可，选择将虚拟磁盘存储为单个文件</p>
+</li>
+<li><p>自定义硬件：</p>
+<pre><code>内存：内存默认1G,但在搭建LNMP环境的时候，为了提高编译安装的速度，可以根据自己物理机内存多划分点给虚拟机，8G物理机可以划分3G左右。
+
+处理器；1核即可；
+
 CD/DVD：勾选启动时连接，勾选使用ISO镜像，选择刚刚下载的镜像。
+
 网络适配器：勾选启动时连接，勾选自定义特定虚拟网络，勾选VMnet1(NAT模式);
+
 USB控制器：默认即可;
+
 声卡：（声卡用不到，点击下面的移除）;
+
 打印机：（打印机用不到，点击下面的移除）;
+
 显示器：默认即可;
-</code></pre>4.点击 完成，空白虚拟机创建完成。</li>
+</code></pre></li>
+<li><p>点击 完成，空白虚拟机创建完成。</p>
+</li>
 </ol>
 <h3 id="开机安装-Centos"><a href="#开机安装-Centos" class="headerlink" title="开机安装 Centos"></a>开机安装 Centos</h3><ol>
 <li>测试</li>
@@ -323,7 +391,7 @@ USB控制器：默认即可;
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
     </div>
 
       
