@@ -15,13 +15,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+<meta name="description" content="[TOC] LNMP环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;  开始安装 为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2; 打开虚拟机，新建虚拟机，典型 -&amp;gt;">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LNMP搭建_虚拟机安装centos">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/虚拟机安装centos/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] LNMP环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;  开始安装 为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2; 打开虚拟机，新建虚拟机，典型 -&amp;gt;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-27T16:07:48.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="LNMP搭建_虚拟机安装centos">
+<meta name="twitter:description" content="[TOC] LNMP环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;  开始安装 为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2; 打开虚拟机，新建虚拟机，典型 -&amp;gt;">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -53,7 +58,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2019/3 | Hexo</title>
+<title>LNMP搭建_虚拟机安装centos | Hexo</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -63,8 +68,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "/js/jquery.fancybox.min.js",
@@ -253,151 +258,187 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-虚拟机安装centos" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/03/27/虚拟机安装centos/" class="archive-article-date">
-      <time datetime="2019-03-27T14:25:19.000Z" itemprop="datePublished">03-27</time>
+    <div class="article-meta">
+      <a href="/2019/03/27/虚拟机安装centos/" class="article-date">
+      <time datetime="2019-03-27T14:25:19.000Z" itemprop="datePublished">2019-03-27</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LNMP搭建_虚拟机安装centos
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/Linux/">Linux</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>[TOC]</p>
+<h2 id="LNMP环境搭建（一）虚拟机安装精简centos7-2"><a href="#LNMP环境搭建（一）虚拟机安装精简centos7-2" class="headerlink" title="LNMP环境搭建（一）虚拟机安装精简centos7.2"></a>LNMP环境搭建（一）虚拟机安装精简centos7.2</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择;</li>
+<li>镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;</li>
+</ol>
+<h3 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h3><ol>
+<li>为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2;</li>
+<li>打开虚拟机，新建虚拟机，典型 -&gt; 选择新建一个空白硬盘 -&gt; 选择Linux系统，版本选择Centos 64位 -&gt; 安装位置选择刚刚新建的文件夹 centos7.2 -&gt; 磁盘大小默认20G即可，选择将虚拟磁盘存储为单个文件</li>
+<li>自定义硬件：内存：内存默认1G,但在搭建LNMP环境的时候，为了提高编译安装的速度，可以根据自己物理机内存多划分点给虚拟机，8G物理机可以划分3G左右。<pre><code>处理器；1核即可；
+CD/DVD：勾选启动时连接，勾选使用ISO镜像，选择刚刚下载的镜像。
+网络适配器：勾选启动时连接，勾选自定义特定虚拟网络，勾选VMnet1(NAT模式);
+USB控制器：默认即可;
+声卡：（声卡用不到，点击下面的移除）;
+打印机：（打印机用不到，点击下面的移除）;
+显示器：默认即可;
+</code></pre>4.点击 完成，空白虚拟机创建完成。</li>
+</ol>
+<h3 id="开机安装-Centos"><a href="#开机安装-Centos" class="headerlink" title="开机安装 Centos"></a>开机安装 Centos</h3><ol>
+<li>测试</li>
+</ol>
+
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/03/22/hello-hexo/" class="archive-article-date">
-      <time datetime="2019-03-22T06:05:31.000Z" itemprop="datePublished">03-22</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/22/hello-hexo/">hello hexo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/03/22/postName/" class="archive-article-date">
-      <time datetime="2019-03-21T17:08:46.000Z" itemprop="datePublished">03-22</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/22/postName/">postName</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/111/">111</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">John Doe</a></p>
+        <p><span>发布时间:</span>2019-03-27, 22:25:19</p>
+        <p><span>最后更新:</span>2019-03-28, 00:07:48</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/27/虚拟机安装centos/" title="LNMP搭建_虚拟机安装centos">http://yoursite.com/2019/03/27/虚拟机安装centos/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/27/虚拟机安装centos/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/03/22/hello-hexo/">
+                    hello hexo
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/03/22/hello-world/" class="archive-article-date">
-      <time datetime="2019-03-21T16:44:21.745Z" itemprop="datePublished">03-22</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LNMP环境搭建（一）虚拟机安装精简centos7-2"><span class="toc-number">1.</span> <span class="toc-text">LNMP环境搭建（一）虚拟机安装精简centos7.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开机安装-Centos"><span class="toc-number">1.3.</span> <span class="toc-text">开机安装 Centos</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/22/hello-world/">Hello World</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"LNMP搭建_虚拟机安装centos　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
+    
+</div>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/03/22/hello-hexo/" title="下一篇: hello hexo">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/hello-hexo/">hello hexo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/postName/">postName</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/22/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/test/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
