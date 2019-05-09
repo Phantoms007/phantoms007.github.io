@@ -15,18 +15,13 @@
 
 
 
-<meta name="description" content="前言： MySQL监控–初级入门前言 作为后端开发，数据库不听话了，能忍？ 不说手到病除，起码也得对症下药">
-<meta name="keywords" content="MySQL">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL监控--初级入门">
-<meta property="og:url" content="http://yoursite.com/2019/03/27/MySQL监控/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="架构之路">
+<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
 <meta property="og:site_name" content="架构之路">
-<meta property="og:description" content="前言： MySQL监控–初级入门前言 作为后端开发，数据库不听话了，能忍？ 不说手到病除，起码也得对症下药">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T08:18:59.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL监控--初级入门">
-<meta name="twitter:description" content="前言： MySQL监控–初级入门前言 作为后端开发，数据库不听话了，能忍？ 不说手到病除，起码也得对症下药">
+<meta name="twitter:title" content="架构之路">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +53,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>MySQL监控--初级入门 | 架构之路</title>
+<title>Archives: 2019/5 | 架构之路</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -68,8 +63,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
-        isArchive: false,
+        isPost: false,
+        isArchive: true,
         isTag: false,
         isCategory: false,
         fancybox_js: "/js/jquery.fancybox.min.js",
@@ -301,175 +296,60 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-MySQL监控" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2019/03/27/MySQL监控/" class="article-date">
-      <time datetime="2019-03-27T14:25:19.000Z" itemprop="datePublished">2019-03-27</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2019/05/09/MySQL监控/" class="archive-article-date">
+      <time datetime="2019-05-09T08:29:19.000Z" itemprop="datePublished">05-09</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      MySQL监控--初级入门
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-archive">
+          
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
     </div>
 
 
-        
+          
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
     </div>
 
+        </div>
         <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <excerpt in index | 首页摘要>
-
-<p>前言：</p>
-<h2 id="MySQL监控–初级入门"><a href="#MySQL监控–初级入门" class="headerlink" title="MySQL监控–初级入门"></a>MySQL监控–初级入门</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ol>
-<li>作为后端开发，数据库不听话了，能忍？</li>
-<li>不说手到病除，起码也得对症下药</li>
-</ol>
-<a id="more"></a>
-<p><the rest of contents | 余下全文></the></p>
-<h3 id="疑难杂症"><a href="#疑难杂症" class="headerlink" title="疑难杂症"></a>疑难杂症</h3><h2 id="1-Too-many-connections"><a href="#1-Too-many-connections" class="headerlink" title="1.Too many connections"></a>1.Too many connections</h2><ol>
-<li>MySQL服务器所支持的最大连接数是有上限的，因为每个连接的建立都会消耗内存，所以，需要关注这个参数：max_connections，一般默认最大连接数是150。命令：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;%max_connections%&apos;;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>知道了自己MySQL最大连接数后，还需要知道到底建立了哪些连接，命令：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">show full processlist;</span><br><span class="line">+-------+-------+-----------------------+----------------+---------+------+-------+-----------------------+</span><br><span class="line">| Id    | User  | Host                  | db             | Command | Time | State | Info                  |</span><br><span class="line">+-------+-------+-----------------------+----------------+---------+------+-------+-----------------------+</span><br><span class="line">|    26 | root  | localhost             | NULL           | Query   |    0 | NULL  | show full processlist |</span><br><span class="line">|    29 | root  | localhost:57654       | kkl28          | Sleep   |  964 |       | NULL                  |</span><br><span class="line">|  1471 | root  | localhost:40774       | kkl28          | Sleep   |  964 |       | NULL                  |</span><br><span class="line">+-------+-------+-----------------------+----------------+---------+------+-------+-----------------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<p>表示有3条连接</p>
-<ol start="3">
-<li></li>
-<li></li>
-</ol>
-<h2 id="2-交互式连接和非交互式连接"><a href="#2-交互式连接和非交互式连接" class="headerlink" title="2.交互式连接和非交互式连接"></a>2.交互式连接和非交互式连接</h2><ol>
-<li></li>
-</ol>
-</excerpt>
-      
-    </div>
-    
+    </header>
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/03/27/MySQL监控/">MySQL监控--初级入门</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
-        <p><span>发布时间:</span>2019-03-27, 22:25:19</p>
-        <p><span>最后更新:</span>2019-05-09, 16:18:59</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/03/27/MySQL监控/" title="MySQL监控--初级入门">http://yoursite.com/2019/03/27/MySQL监控/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/27/MySQL监控/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/03/28/LNMP搭建-Linux搭建/">
-                    LNMP搭建_Linux搭建
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/03/27/虚拟机安装centos/">
-                    LNMP搭建_虚拟机安装centos
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL监控–初级入门"><span class="toc-number">1.</span> <span class="toc-text">MySQL监控–初级入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑难杂症"><span class="toc-number">1.2.</span> <span class="toc-text">疑难杂症</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Too-many-connections"><span class="toc-number">2.</span> <span class="toc-text">1.Too many connections</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-交互式连接和非交互式连接"><span class="toc-number">3.</span> <span class="toc-text">2.交互式连接和非交互式连接</span></a></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-
+  
+  
+    </div></section>
+  
 
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2019/03/28/LNMP搭建-Linux搭建/" title="上一篇: LNMP搭建_Linux搭建">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/03/27/虚拟机安装centos/" title="下一篇: LNMP搭建_虚拟机安装centos">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">Windows下生成PDF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">LNMP搭建_Linux搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
