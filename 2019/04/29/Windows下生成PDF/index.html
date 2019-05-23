@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。 Windows下生成PDF（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.org/downloads.html 参考文档：https://wkhtmltopdf.">
+<meta name="description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
 <meta name="keywords" content="Windows,PDF,HTML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows下生成PDF">
+<meta property="og:title" content="生成复杂PDF-Windows篇">
 <meta property="og:url" content="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/index.html">
 <meta property="og:site_name" content="随笔小记">
-<meta property="og:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。 Windows下生成PDF（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.org/downloads.html 参考文档：https://wkhtmltopdf.">
+<meta property="og:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-29T05:15:12.516Z">
+<meta property="og:updated_time" content="2019-05-23T03:24:46.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows下生成PDF">
-<meta name="twitter:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。 Windows下生成PDF（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.org/downloads.html 参考文档：https://wkhtmltopdf.">
+<meta name="twitter:title" content="生成复杂PDF-Windows篇">
+<meta name="twitter:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Windows下生成PDF | 随笔小记</title>
+<title>生成复杂PDF-Windows篇 | 随笔小记</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -320,7 +320,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Windows下生成PDF
+      生成复杂PDF-Windows篇
     </h1>
   
 
@@ -347,8 +347,8 @@
           
         <excerpt in index | 首页摘要>
 
-<p>前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。</p>
-<h2 id="Windows下生成PDF（一）环境安装"><a href="#Windows下生成PDF（一）环境安装" class="headerlink" title="Windows下生成PDF（一）环境安装"></a>Windows下生成PDF（一）环境安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<p>前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。</p>
+<h2 id="生成复杂PDF-Windows篇（一）环境安装"><a href="#生成复杂PDF-Windows篇（一）环境安装" class="headerlink" title="生成复杂PDF-Windows篇（一）环境安装"></a>生成复杂PDF-Windows篇（一）环境安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li>操作系统：Windows 操作系统</li>
 <li>软件：wkhtmltopdf —— 下载地址：<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">https://wkhtmltopdf.org/downloads.html</a></li>
 <li>参考文档：<a href="https://wkhtmltopdf.org/usage/wkhtmltopdf.txt" target="_blank" rel="noopener">https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</a></li>
@@ -380,12 +380,12 @@ http://www.baidu.com ------ 要打印的网址
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/29/Windows下生成PDF/">Windows下生成PDF</a></p>
+        <p><span>本文标题:</span><a href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-04-29, 10:09:19</p>
-        <p><span>最后更新:</span>2019-04-29, 13:15:12</p>
+        <p><span>最后更新:</span>2019-05-23, 11:24:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/29/Windows下生成PDF/" title="Windows下生成PDF">https://phantoms007.github.io/2019/04/29/Windows下生成PDF/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/29/Windows下生成PDF/" title="生成复杂PDF-Windows篇">https://phantoms007.github.io/2019/04/29/Windows下生成PDF/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/04/29/Windows下生成PDF/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -419,7 +419,7 @@ http://www.baidu.com ------ 要打印的网址
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows下生成PDF（一）环境安装"><span class="toc-number">1.</span> <span class="toc-text">Windows下生成PDF（一）环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装-wkhtmltopdf"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装 wkhtmltopdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能测试"><span class="toc-number">1.3.</span> <span class="toc-text">功能测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令解析"><span class="toc-number">1.4.</span> <span class="toc-text">命令解析</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成复杂PDF-Windows篇（一）环境安装"><span class="toc-number">1.</span> <span class="toc-text">生成复杂PDF-Windows篇（一）环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装-wkhtmltopdf"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装 wkhtmltopdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能测试"><span class="toc-number">1.3.</span> <span class="toc-text">功能测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令解析"><span class="toc-number">1.4.</span> <span class="toc-text">命令解析</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -444,27 +444,24 @@ http://www.baidu.com ------ 要打印的网址
 
 
     
-        <section id="comments">
-    <style> aside.comment-bar { margin: auto 30px; }</style>
-    <div id="disqus_thread"></div>
+      <div class="duoshuo" id="comments">
+    <div id="comment-box"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/04/29/Windows下生成PDF/" data-title="生成复杂PDF-Windows篇" data-url="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/"></div>
     <script>
-        var disqus_config = function(){
-            this.page.url = 'https://phantoms007.github.io/2019/04/29/Windows下生成PDF/';
-            this.page.identifier = '2019/04/29/Windows下生成PDF/';
-        };
+        var duoshuoQuery = {short_name:""};
         var loadComment = function(){
             var d = document, s = d.createElement('script');
-            s.src = '//.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
             (d.head || d.body).appendChild(s);
         }
+
+        
     </script>
     
     <script> loadComment(); </script>
 
-</section>
-
-
+</div>
     
 
 
@@ -486,7 +483,7 @@ http://www.baidu.com ------ 要打印的网址
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos6.9 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">Windows下生成PDF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">LNMP搭建_Linux搭建（虚拟机）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos6.9 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">LNMP搭建_Linux搭建（虚拟机）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">LNMP搭建_虚拟机安装centos</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
 
 
 
