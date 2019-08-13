@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="随笔小记">
 <meta property="og:description" content="准备工作一. LAMP源代码版本:1.centos7.32.httpd-2.4.29.tar.gz3.mysql-boost-5.7.20.tar.gz4.php-7.2.21.tar.gz5.apr-1.5.2.tar.gz6.apr-util-1.5.2.tar.gz7.cmake-3.7.1.tar.gz">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T05:36:18.776Z">
+<meta property="og:updated_time" content="2019-08-13T06:14:47.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7.3 LAMP源码编译参考手册">
 <meta name="twitter:description" content="准备工作一. LAMP源代码版本:1.centos7.32.httpd-2.4.29.tar.gz3.mysql-boost-5.7.20.tar.gz4.php-7.2.21.tar.gz5.apr-1.5.2.tar.gz6.apr-util-1.5.2.tar.gz7.cmake-3.7.1.tar.gz">
@@ -483,13 +483,58 @@ apr-util-1.5.2.tar.gz
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 </code></pre><p>2.客户访问<br><a href="http://192.168.20.1" target="_blank" rel="noopener">http://192.168.20.1</a></p>
 <h3 id="八、设置apache和mysql开机启动（至此基础配置完成）"><a href="#八、设置apache和mysql开机启动（至此基础配置完成）" class="headerlink" title="八、设置apache和mysql开机启动（至此基础配置完成）"></a>八、设置apache和mysql开机启动（至此基础配置完成）</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br><span class="line">/usr/local/apache/bin/apachectl start</span><br><span class="line">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;&gt;/dev/null &amp;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="九、开启虚拟主机"><a href="#九、开启虚拟主机" class="headerlink" title="九、开启虚拟主机"></a>九、开启虚拟主机</h3><h3 id="十、PHP7-开启opcache"><a href="#十、PHP7-开启opcache" class="headerlink" title="十、PHP7 开启opcache"></a>十、PHP7 开启opcache</h3><p>编辑php配置文件</p>
+</code></pre><h3 id="九、开启虚拟主机"><a href="#九、开启虚拟主机" class="headerlink" title="九、开启虚拟主机"></a>九、开启虚拟主机</h3><p>开启vhost模块：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule vhost_alias_module modules/mod_vhost_alias.so</span><br></pre></td></tr></table></figure>
+</code></pre><p>引入vhosts配置文件</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Include conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
+</code></pre><p>编辑配置文件</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi httpd-vhosts.conf</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin tech@chinesestyle.com</span><br><span class="line">    DocumentRoot &quot;/usr/local/apache/htdocs/test.chinesestyle.com&quot;</span><br><span class="line">    ServerName test.mojsoft.com</span><br><span class="line">    ErrorLog &quot;/usr/local/apache/logs/test.mojsoft.com-error_log&quot;</span><br><span class="line">    CustomLog &quot;/usr/local/apache/logs/test.mojsoft.com-access_log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="十、PHP7-开启opcache"><a href="#十、PHP7-开启opcache" class="headerlink" title="十、PHP7 开启opcache"></a>十、PHP7 开启opcache</h3><p>编辑php配置文件</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/php/etc/php.ini</span><br></pre></td></tr></table></figure>
 </code></pre><p>搜索opcache,并编辑</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zend_extension=opcache.so</span><br><span class="line">opcache.enable=1</span><br><span class="line">opcache.enable_cli=1</span><br></pre></td></tr></table></figure>
 </code></pre><p>重启apache，查看phpinfo</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="十一、PHP扩展redis"><a href="#十一、PHP扩展redis" class="headerlink" title="十一、PHP扩展redis"></a>十一、PHP扩展redis</h3><h3 id="十二、apache-支持-https"><a href="#十二、apache-支持-https" class="headerlink" title="十二、apache 支持 https"></a>十二、apache 支持 https</h3><p>开启ssl模块：</p>
+</code></pre><h3 id="十一、PHP扩展redis"><a href="#十一、PHP扩展redis" class="headerlink" title="十一、PHP扩展redis"></a>十一、PHP扩展redis</h3><p>1.服务器安装redis</p>
+<pre><code>（1）获取资源
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.8.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+（2）解压
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzvf redis-4.0.8.tar.gz</span><br></pre></td></tr></table></figure>
+
+（3）安装
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd redis-4.0.8</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">cd src</span><br><span class="line"></span><br><span class="line">make install PREFIX=/usr/local/redis</span><br></pre></td></tr></table></figure>
+
+（4）移动配置文件到安装目录下
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ../</span><br><span class="line"></span><br><span class="line">mkdir /usr/local/redis/etc</span><br><span class="line"></span><br><span class="line">mv redis.conf /usr/local/redis/etc</span><br></pre></td></tr></table></figure>
+
+（5）配置redis为后台启动
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/redis/etc/redis.conf //将daemonize no 改成daemonize yes</span><br></pre></td></tr></table></figure>
+
+（6）将redis加入到开机启动
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local </span><br><span class="line">//在里面添加内容：</span><br><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+（7）开启redis
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+（8）常用命令　　
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-server /usr/local/redis/etc/redis.conf //启动redis</span><br><span class="line"></span><br><span class="line">pkill redis  //停止redis</span><br><span class="line"></span><br><span class="line">卸载redis：</span><br><span class="line">rm -rf /usr/local/redis //删除安装目录</span><br><span class="line">rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本</span><br><span class="line">rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹</span><br></pre></td></tr></table></figure>
+</code></pre><p>2.PHP安装phpredis扩展</p>
+<pre><code>（1）下载
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://pecl.php.net/get/redis-3.1.0.tgz</span><br></pre></td></tr></table></figure>
+
+（2）解压安装并进入Redis目录
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxf redis-3.1.0.tgz </span><br><span class="line">cd redis-3.1.0</span><br></pre></td></tr></table></figure>
+
+（3）在Redis文件夹下，生成configure配置文件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost redis-3.1.0]# /usr/local/php/bin/phpize</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:         20160303</span><br><span class="line">Zend Module Api No:      20160303</span><br><span class="line">Zend Extension Api No:   320160303</span><br><span class="line">[root@localhost redis-3.1.0]# ./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">[root@localhost redis-3.1.0]# make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+（4）修改配置文件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/php/etx/php.ini</span><br><span class="line"></span><br><span class="line">#加入redis.so</span><br><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="十二、apache-支持-https"><a href="#十二、apache-支持-https" class="headerlink" title="十二、apache 支持 https"></a>十二、apache 支持 https</h3><p>开启ssl模块：</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule ssl_module modules/mod_ssl.so</span><br></pre></td></tr></table></figure>
 </code></pre><p>开启socache_shmcb模块：</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule socache_shmcb_module modules/mod_socache_shmcb.so</span><br></pre></td></tr></table></figure>
@@ -498,7 +543,7 @@ apr-util-1.5.2.tar.gz
 </code></pre><p>备份原配置文件</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp httpd-ssl.conf httpd-ssl.conf-bak</span><br></pre></td></tr></table></figure>
 </code></pre><p>编辑配置文件</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:443&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/html&quot;</span><br><span class="line">    ServerName www.domain.com:443</span><br><span class="line">    SSLEngine on</span><br><span class="line">    SSLCertificateFile /usr/local/apache/conf/2_www.domain.com_cert.crt</span><br><span class="line">    SSLCertificateKeyFile /usr/local/apache/conf/3_www.domain.com.key</span><br><span class="line">    SSLCertificateChainFile /usr/local/apache/conf/1_root_bundle.crt</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi httpd-ssl.conf</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:443&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/html&quot;</span><br><span class="line">    ServerName www.domain.com:443</span><br><span class="line">    SSLEngine on</span><br><span class="line">    SSLCertificateFile /usr/local/apache/conf/2_www.domain.com_cert.crt</span><br><span class="line">    SSLCertificateKeyFile /usr/local/apache/conf/3_www.domain.com.key</span><br><span class="line">    SSLCertificateChainFile /usr/local/apache/conf/1_root_bundle.crt</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 </code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>开机启动文件赋权限(centos7默认开机不执行这个文件)</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
 </code></pre><p>有漏洞不足欢迎补充</p>
@@ -514,7 +559,7 @@ apr-util-1.5.2.tar.gz
         <p><span>本文标题:</span><a href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-05-17, 16:26:07</p>
-        <p><span>最后更新:</span>2019-08-13, 13:36:18</p>
+        <p><span>最后更新:</span>2019-08-13, 14:14:47</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/" title="Centos7.3 LAMP源码编译参考手册">https://phantoms007.github.io/2019/05/17/Centos6.9 LAMP源码编译参考手册/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/05/17/Centos6.9 LAMP源码编译参考手册/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
