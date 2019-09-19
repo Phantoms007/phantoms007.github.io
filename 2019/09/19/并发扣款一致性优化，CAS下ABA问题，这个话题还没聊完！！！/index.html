@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860427424.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860452077.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860488009.png">
-<meta property="og:updated_time" content="2019-09-19T02:39:09.110Z">
+<meta property="og:updated_time" content="2019-09-19T03:18:37.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">
 <meta name="twitter:description" content="并发扣款一致性优化，CAS下ABA问题转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/03ndQ7k2ehQzYVDYgCpWHQ仅作学习用，如有侵权告删。">
@@ -363,23 +363,17 @@
 <p>大家有非常多的留言，大概有这么几类：</p>
 <p>（1）<strong>是否存在ABA问题？</strong></p>
 <p>（2）为什么不能用：</p>
-<p><em>UPDATE t_yue SET money=money-$diff AND<strong>money&gt;=$diff</strong>;</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=money-$diff AND money&gt;=$diff;</span><br></pre></td></tr></table></figure>
 <p>（3）能否借助<strong>redis事务</strong>来扣减余额；</p>
 <p><em>画外音：<strong>请务必阅读前序文章：</strong>《</em><a href="[https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw](https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw">并发扣款，如何保证数据的一致性？</a>)<em>》。</em></p>
 <p>问题比较多，今天先聊第一个问题，ABA。  </p>
 <p><strong>什么是ABA问题？</strong></p>
 <p>CAS乐观锁机制确实能够提升吞吐，并保证一致性，但在极端情况下可能会出现ABA问题。</p>
 <p>考虑如下操作：</p>
-<ul>
-<li><p>并发1（上）：获取出数据的初始值是A，后续计划实施CAS乐观锁，期望数据仍是A的时候，修改才能成功</p>
-</li>
-<li><p>并发2：将数据修改成B</p>
-</li>
-<li><p>并发3：将数据修改回A</p>
-</li>
-<li><p>并发1（下）：CAS乐观锁，检测发现初始值还是A，进行数据修改</p>
-</li>
-</ul>
+<p><strong> * </strong> 并发1（上）：获取出数据的初始值是A，后续计划实施CAS乐观锁，期望数据仍是A的时候，修改才能成功</p>
+<p><strong> * </strong> 并发2：将数据修改成B</p>
+<p><strong> * </strong> 并发3：将数据修改回A</p>
+<p><strong> * </strong> 并发1（下）：CAS乐观锁，检测发现初始值还是A，进行数据修改  </p>
 <p>上述并发环境下，并发1在修改数据时，虽然还是A，但已经不是初始条件的A了，中间发生了A变B，B又变A的变化，此A已经非彼A，数据却成功修改，可能导致错误，这就是CAS引发的所谓的ABA问题。</p>
 <p><strong>余额操作，出现ABA问题并不会对业务产生影响</strong>，因为对于“余额”属性来说，前一个A为100余额，与后一个A为100余额，本质是相同的。</p>
 <p>但其他场景未必是这样，举一个堆栈操作的例子：</p>
@@ -402,28 +396,23 @@
 <p><em>t_yue(uid, money)</em></p>
 <p>升级为：</p>
 <p><em>t_yue(uid, money,<strong>version</strong>)</em></p>
-<p>（2）查询余额时，同时查询版本号。</p>
-<p><em>SELECT money FROM t_yue WHERE sid=$sid</em></p>
-<p>升级为：</p>
-<p><em>SELECT money,<strong>version</strong>FROM t_yue WHERE sid=$sid</em></p>
+<p>（2）查询余额时，同时查询版本号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT money FROM t_yue WHERE sid=$sid;</span><br></pre></td></tr></table></figure></p>
+<p>升级为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT money, version FROM t_yue WHERE sid=$sid;</span><br></pre></td></tr></table></figure></p>
 <p>假设有并发操作，都会将版本号查询出来。</p>
 <p>（3）设置余额时，必须版本号相同，并且版本号要修改。</p>
 <p>旧版本“值”比对：</p>
-<p><em>UPDATE t_yue SET money=38 WHERE uid=$uid AND money=100</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=38 WHERE uid=$uid AND money=100;</span><br></pre></td></tr></table></figure>
 <p>升级为“版本号”比对：</p>
-<p><em>UPDATE t_yue SET money=38,<strong>version=$version_new</strong>WHERE uid=$uid AND**version=$version_old</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=38,version=$version_new WHERE uid=$uid AND version=$version_old;</span><br></pre></td></tr></table></figure>
 <p>此时假设有并发操作，首先操作的请求会修改版本号，并发操作会执行失败。</p>
-<p><em>画外音：**version通用，本例是强行用version举例而已，实际上本例可以用余额“值”比对。</em></p>
+<p><em>画外音：<strong>version通用</strong>，本例是强行用version举例而已，实际上本例可以用余额“值”比对。</em></p>
 <p>总结</p>
-<ul>
-<li><p>select&amp;set业务场景，在并发时会出现一致性问题</p>
-</li>
-<li><p>基于“值”的CAS乐观锁，可能导致ABA问题</p>
-</li>
-<li><p>CAS乐观锁，必须保证修改时的“此数据”就是“彼数据”，应该由“值”比对，优化为“版本号”比对</p>
-</li>
-</ul>
-<p>思路比结论重要。</p>
+<pre><code>1. select&amp;set业务场景，在并发时会出现一致性问题
+
+2. 基于“值”的CAS乐观锁，可能导致ABA问题
+
+3. CAS乐观锁，必须保证修改时的“此数据”就是“彼数据”，应该由“值”比对，优化为“版本号”比对
+</code></pre><p>思路比结论重要。</p>
 </the></excerpt>
       
     </div>
@@ -435,7 +424,7 @@
         <p><span>本文标题:</span><a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-09-19, 10:14:31</p>
-        <p><span>最后更新:</span>2019-09-19, 10:39:09</p>
+        <p><span>最后更新:</span>2019-09-19, 11:18:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" title="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
