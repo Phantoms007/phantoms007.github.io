@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856667567.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856719788.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856732624.png">
-<meta property="og:updated_time" content="2019-09-19T02:18:02.944Z">
+<meta property="og:updated_time" content="2019-09-19T02:25:25.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发扣款，如何保证数据的一致性？">
 <meta name="twitter:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
@@ -218,7 +218,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扣款/">扣款</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ABA/">ABA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扣款/">扣款</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a></li></ul>
                     </div>
                 </section>
                 
@@ -378,7 +378,7 @@
 <p><strong>步骤三</strong>，业务1对数据库中的余额先进行修改，设置成28元。</p>
 <p>业务2对数据库中的余额后进行修改，设置成38元。</p>
 <p><img src="/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856732624.png" alt></p>
-<p>此时异常出现了，原有金额100元，业务1扣除了72元，业务2扣除了62元，最后剩余38元。<br><em>画外音：**假设业务1先写回余额，业务2再写回余额。</em></p>
+<p>此时异常出现了，原有金额100元，业务1扣除了72元，业务2扣除了62元，最后剩余38元。<br><em>画外音：假设业务1先写回余额，业务2再写回余额。</em></p>
 <p><strong>常见的解决方案？</strong></p>
 <p>对于此案例，同一个用户，并发扣款时，有小概率会出现异常，可以对每一个用户进行分布式锁互斥，例如：在redis/zk里抢到一个key才能继续操作，否则禁止操作。  </p>
 <p>这种<strong>悲观锁</strong>方案确实可行，但要引入额外的组件(redis/zk)，并且会降低吞吐量。  </p>
@@ -393,7 +393,7 @@
 <p><strong>此时业务要怎么改？</strong></p>
 <p>使用CAS解决高并发时数据一致性问题，只需要在进行set操作时，compare初始值，如果初始值变换，不允许set成功。  </p>
 <p>具体到这个case，只需要将：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new\_money WHERE uid=$uid;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new_money WHERE uid=$uid;</span><br></pre></td></tr></table></figure>
 <p>升级为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new_money WHERE uid=$uid AND money=$old_money;</span><br></pre></td></tr></table></figure>
 <p>即可。  </p>
@@ -420,7 +420,7 @@
         <p><span>本文标题:</span><a href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-09-19, 09:35:18</p>
-        <p><span>最后更新:</span>2019-09-19, 10:18:02</p>
+        <p><span>最后更新:</span>2019-09-19, 10:25:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款，如何保证数据的一致性？/" title="并发扣款，如何保证数据的一致性？">https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
