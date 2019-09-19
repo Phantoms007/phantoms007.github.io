@@ -15,18 +15,13 @@
 
 
 
-<meta name="description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
-<meta name="keywords" content="Windows,PDF,HTML">
-<meta property="og:type" content="article">
-<meta property="og:title" content="生成复杂PDF-Windows篇">
-<meta property="og:url" content="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="随笔小记">
+<meta property="og:url" content="https://phantoms007.github.io/archives/2019/09/index.html">
 <meta property="og:site_name" content="随笔小记">
-<meta property="og:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-23T03:24:46.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生成复杂PDF-Windows篇">
-<meta name="twitter:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
+<meta name="twitter:title" content="随笔小记">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +53,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>生成复杂PDF-Windows篇 | 随笔小记</title>
+<title>Archives: 2019/9 | 随笔小记</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -68,8 +63,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
-        isArchive: false,
+        isPost: false,
+        isArchive: true,
         isTag: false,
         isCategory: false,
         fancybox_js: "/js/jquery.fancybox.min.js",
@@ -301,196 +296,60 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Windows下生成PDF" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2019/04/29/Windows下生成PDF/" class="article-date">
-      <time datetime="2019-04-29T02:09:19.000Z" itemprop="datePublished">2019-04-29</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2019/09/19/并发扣款，如何保证数据的一致性？/" class="archive-article-date">
+      <time datetime="2019-09-19T01:35:18.000Z" itemprop="datePublished">09-19</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      生成复杂PDF-Windows篇
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDF/">PDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <excerpt in index | 首页摘要>
-
-<p>前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。</p>
-<h2 id="生成复杂PDF-Windows篇（一）环境安装"><a href="#生成复杂PDF-Windows篇（一）环境安装" class="headerlink" title="生成复杂PDF-Windows篇（一）环境安装"></a>生成复杂PDF-Windows篇（一）环境安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>操作系统：Windows 操作系统</li>
-<li>软件：wkhtmltopdf —— 下载地址：<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">https://wkhtmltopdf.org/downloads.html</a></li>
-<li>参考文档：<a href="https://wkhtmltopdf.org/usage/wkhtmltopdf.txt" target="_blank" rel="noopener">https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</a></li>
-</ol>
-<a id="more"></a>
-<p><the rest of contents | 余下全文></the></p>
-<h3 id="开始安装-wkhtmltopdf"><a href="#开始安装-wkhtmltopdf" class="headerlink" title="开始安装 wkhtmltopdf"></a>开始安装 wkhtmltopdf</h3><p>一键安装wkhtmltopdf客户端</p>
-<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><p>测试：</p>
-<pre><code>1. win+r,输入cmd,打开命令窗口。
-
-
-2. 打开客户端安装的目录 
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd \Program Files\wkhtmltopdf\bin</span><br></pre></td></tr></table></figure>
-
-3. 运行命令
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wkhtmltopdf http://www.baidu.com 123.pdf</span><br></pre></td></tr></table></figure>
-
-4. 在当前文件夹下会生成123.pdf的文件
-</code></pre><h3 id="命令解析"><a href="#命令解析" class="headerlink" title="命令解析"></a>命令解析</h3><p>命令：<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wkhtmltopdf http://www.baidu.com 123.pdf</span><br></pre></td></tr></table></figure></p>
-<pre><code>wkhtmltopdf          ------ 执行指令
-http://www.baidu.com ------ 要打印的网址
-123.pdf              ------ 生成的文件名
-</code></pre></excerpt>
-      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
     </div>
-    
+
+
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/扣款/">扣款</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+    </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
-        <p><span>发布时间:</span>2019-04-29, 10:09:19</p>
-        <p><span>最后更新:</span>2019-05-23, 11:24:46</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/29/Windows下生成PDF/" title="生成复杂PDF-Windows篇">https://phantoms007.github.io/2019/04/29/Windows下生成PDF/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/04/29/Windows下生成PDF/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/05/09/MySQL监控/">
-                    MySQL监控--初级入门
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/03/28/LNMP搭建-Linux搭建/">
-                    服务器集群-环境搭建（二）Nginx服务器搭建
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成复杂PDF-Windows篇（一）环境安装"><span class="toc-number">1.</span> <span class="toc-text">生成复杂PDF-Windows篇（一）环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装-wkhtmltopdf"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装 wkhtmltopdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能测试"><span class="toc-number">1.3.</span> <span class="toc-text">功能测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令解析"><span class="toc-number">1.4.</span> <span class="toc-text">命令解析</span></a></li></ol></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-
+  
+  
+    </div></section>
+  
 
     
-      <div class="duoshuo" id="comments">
-    <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/04/29/Windows下生成PDF/" data-title="生成复杂PDF-Windows篇" data-url="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/"></div>
-    <script>
-        var duoshuoQuery = {short_name:""};
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            s.async = true; s.charset = 'UTF-8';
-            (d.head || d.body).appendChild(s);
-        }
 
-        
-    </script>
-    
-    <script> loadComment(); </script>
-
-</div>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2019/05/09/MySQL监控/" title="上一篇: MySQL监控--初级入门">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/03/28/LNMP搭建-Linux搭建/" title="下一篇: 服务器集群-环境搭建（二）Nginx服务器搭建">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">

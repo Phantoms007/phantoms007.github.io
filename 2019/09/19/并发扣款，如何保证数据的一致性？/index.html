@@ -15,18 +15,22 @@
 
 
 
-<meta name="description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
-<meta name="keywords" content="Windows,PDF,HTML">
+<meta name="description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
+<meta name="keywords" content="MySQL,数据库,并发,扣款">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生成复杂PDF-Windows篇">
-<meta property="og:url" content="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/index.html">
+<meta property="og:title" content="并发扣款，如何保证数据的一致性？">
+<meta property="og:url" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/index.html">
 <meta property="og:site_name" content="随笔小记">
-<meta property="og:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
+<meta property="og:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-23T03:24:46.958Z">
+<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856667567.png">
+<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856719788.png">
+<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856732624.png">
+<meta property="og:updated_time" content="2019-09-19T01:41:40.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生成复杂PDF-Windows篇">
-<meta name="twitter:description" content="前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。 生成复杂PDF-Windows篇（一）环境安装准备工作 操作系统：Windows 操作系统 软件：wkhtmltopdf —— 下载地址：https://wkhtmltopdf.or">
+<meta name="twitter:title" content="并发扣款，如何保证数据的一致性？">
+<meta name="twitter:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
+<meta name="twitter:image" content="https://phantoms007.github.io/img/screenshot_1568856667567.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +62,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>生成复杂PDF-Windows篇 | 随笔小记</title>
+<title>并发扣款，如何保证数据的一致性？ | 随笔小记</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -301,11 +305,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Windows下生成PDF" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-并发扣款，如何保证数据的一致性？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/04/29/Windows下生成PDF/" class="article-date">
-      <time datetime="2019-04-29T02:09:19.000Z" itemprop="datePublished">2019-04-29</time>
+      <a href="/2019/09/19/并发扣款，如何保证数据的一致性？/" class="article-date">
+      <time datetime="2019-09-19T01:35:18.000Z" itemprop="datePublished">2019-09-19</time>
 </a>
 
 
@@ -320,7 +324,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      生成复杂PDF-Windows篇
+      并发扣款，如何保证数据的一致性？
     </h1>
   
 
@@ -329,13 +333,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDF/">PDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发/">并发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/扣款/">扣款</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -347,32 +351,63 @@
           
         <excerpt in index | 首页摘要>
 
-<p>前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。</p>
-<h2 id="生成复杂PDF-Windows篇（一）环境安装"><a href="#生成复杂PDF-Windows篇（一）环境安装" class="headerlink" title="生成复杂PDF-Windows篇（一）环境安装"></a>生成复杂PDF-Windows篇（一）环境安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>操作系统：Windows 操作系统</li>
-<li>软件：wkhtmltopdf —— 下载地址：<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">https://wkhtmltopdf.org/downloads.html</a></li>
-<li>参考文档：<a href="https://wkhtmltopdf.org/usage/wkhtmltopdf.txt" target="_blank" rel="noopener">https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</a></li>
-</ol>
+<h2 id="并发扣款，如何保证数据的一致性"><a href="#并发扣款，如何保证数据的一致性" class="headerlink" title="并发扣款，如何保证数据的一致性"></a>并发扣款，如何保证数据的一致性</h2><h3 id="转载说明"><a href="#转载说明" class="headerlink" title="转载说明"></a>转载说明</h3><p>本文转自微信公众号 <a href="https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw</a><br>仅作学习用，如有侵权告删。</p>
 <a id="more"></a>
-<p><the rest of contents | 余下全文></the></p>
-<h3 id="开始安装-wkhtmltopdf"><a href="#开始安装-wkhtmltopdf" class="headerlink" title="开始安装 wkhtmltopdf"></a>开始安装 wkhtmltopdf</h3><p>一键安装wkhtmltopdf客户端</p>
-<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><p>测试：</p>
-<pre><code>1. win+r,输入cmd,打开命令窗口。
+<the rest of contents | 余下全文>
 
-
-2. 打开客户端安装的目录 
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd \Program Files\wkhtmltopdf\bin</span><br></pre></td></tr></table></figure>
-
-3. 运行命令
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wkhtmltopdf http://www.baidu.com 123.pdf</span><br></pre></td></tr></table></figure>
-
-4. 在当前文件夹下会生成123.pdf的文件
-</code></pre><h3 id="命令解析"><a href="#命令解析" class="headerlink" title="命令解析"></a>命令解析</h3><p>命令：<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wkhtmltopdf http://www.baidu.com 123.pdf</span><br></pre></td></tr></table></figure></p>
-<pre><code>wkhtmltopdf          ------ 执行指令
-http://www.baidu.com ------ 要打印的网址
-123.pdf              ------ 生成的文件名
-</code></pre></excerpt>
+<p>\===<br>有个业务，同一个用户在并发 “查询，逻辑计算，扣款” 的情况下，余额可能出现不一致，请问有什么优化方法么？<br>\===  </p>
+<p><strong>扣款的业务场景是怎样的？</strong></p>
+<p>用户购买商品的过程中，要对余额进行查询与修改，大致的业务流程如下：</p>
+<p><strong>第一步</strong>，从数据库查询用户现有余额：<br><em>SELECT money FROM t_yue WHERE uid=$uid;</em><br>不妨设查询出来的$old_money=100元。</p>
+<p><strong>第二步</strong>，业务层实施业务逻辑计算，比如：<br>（1）先查询购买商品的价格，例如是80元；<br>（2）再查询产品是否有活动，以及活动折扣，例如是9折；<br>（3）比对余额是否足够，足够时才往下走；</p>
+<p><em>if($old_money&gt; 80\</em>0.9){<br>    $new_money=$old_money-80*0.9=28<br>} else {<br>    return “Not enough minerals”;<br>}*</p>
+<p><strong>第三步</strong>，将数据库中的余额进行修改。<br><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid;</em>  </p>
+<p>在并发量低的情况下，这个流程没有任何问题，原有金额100元，购买了80元的九折商品（72元），剩余28元。</p>
+<p><strong>同一个用户，并发扣款可能出现什么问题？  
+</strong></p>
+<p>在分布式环境中，如果并发量很大，这种“查询+修改”的业务有一定概率出现数据不一致。  </p>
+<p>极限情况下，可能出现这样的异常流程：</p>
+<p><strong>步骤一</strong>，业务1和业务2并发查询余额，是100元。</p>
+<p><img src="/img/screenshot_1568856667567.png" alt></p>
+<p><em>画外音：这些并发查询，是在不同的站点实例/服务实例上完成的，进程内互斥锁肯定解决不了。</em>  </p>
+<p><strong>步骤二</strong>，业务1和业务2并发进行逻辑计算，算出各自业务的余额，假设业务1算出的余额是28元，业务2算出的余额是38元。</p>
+<p><img src="/img/screenshot_1568856719788.png" alt></p>
+<p><strong>步骤三</strong>，业务1对数据库中的余额先进行修改，设置成28元。</p>
+<p>业务2对数据库中的余额后进行修改，设置成38元。</p>
+<p><img src="/img/screenshot_1568856732624.png" alt></p>
+<p>此时异常出现了，原有金额100元，业务1扣除了72元，业务2扣除了62元，最后剩余38元。<br><em>画外音：**假设业务1先写回余额，业务2再写回余额。</em></p>
+<p><strong>常见的解决方案？</strong></p>
+<p>对于此案例，同一个用户，并发扣款时，有小概率会出现异常，可以对每一个用户进行分布式锁互斥，例如：在redis/zk里抢到一个key才能继续操作，否则禁止操作。  </p>
+<p>这种<strong>悲观锁</strong>方案确实可行，但要引入额外的组件(redis/zk)，并且会降低吞吐量。  </p>
+<p><strong>对于小概率的不一致，有没有乐观锁的方案呢？</strong></p>
+<p>对并发扣款进行进一步的分析发现：  </p>
+<p>（1）业务1写回时，旧余额100，这是一个初始状态；新余额28，这是一个结束状态。理论上只有在旧余额为100时，新余额才应该写回成功。  </p>
+<p>而业务1并发写回时，旧余额确实是100，理应写回成功。  </p>
+<p>（2）业务2写回时，旧余额100，这是一个初始状态；新余额28，这是一个结束状态。理论上只有在旧余额为100时，新余额才应该写回成功。  </p>
+<p>可实际上，这个时候数据库中的金额已经变为28了，所以业务2的并发写回，不应该成功。</p>
+<p><strong>如何低成本实施乐观锁？</strong></p>
+<p>在set写回的时候，加上初始状态的条件compare，只有初始状态不变时，才允许set写回成功，Compare And Set（CAS），是一种常见的降低读写锁冲突，保证数据一致性的方法。</p>
+<p><strong>此时业务要怎么改？</strong></p>
+<p>使用CAS解决高并发时数据一致性问题，只需要在进行set操作时，compare初始值，如果初始值变换，不允许set成功。  </p>
+<p>具体到这个case，只需要将：<br><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid;</em><br>升级为：</p>
+<p><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid<strong>AND money=$old_money</strong>;**<br>即可。  
+</em></p>
+<p>并发操作发生时：</p>
+<p>业务1执行：<br><em>UPDATE t_yue SET money=28 WHERE uid=$uid AND money=100;</em></p>
+<p>业务2执行：<br><em>UPDATE t_yue SET money=38 WHERE uid=$uid AND money=100;</em></p>
+<p>这两个操作同时进行时，只可能有一个执行成功。</p>
+<p><strong>怎么判断哪个并发执行成功，哪个并发执行失败呢？</strong></p>
+<p>set操作，其实无所谓成功或者失败，业务能通过affect rows来判断：</p>
+<ul>
+<li><p>写回成功的，affect rows为1</p>
+</li>
+<li><p>写回失败的，affect rows为0</p>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>高并发“查询并修改”的场景，可以用CAS（Compare and Set）的方式解决数据一致性问题。对应到业务，即在set的时候，加上初始条件的比对即可。  </p>
+<p>优化不难，只改了半行SQL，但确实能解决问题。</p>
+</the></excerpt>
       
     </div>
     
@@ -380,13 +415,13 @@ http://www.baidu.com ------ 要打印的网址
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></p>
+        <p><span>本文标题:</span><a href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
-        <p><span>发布时间:</span>2019-04-29, 10:09:19</p>
-        <p><span>最后更新:</span>2019-05-23, 11:24:46</p>
+        <p><span>发布时间:</span>2019-09-19, 09:35:18</p>
+        <p><span>最后更新:</span>2019-09-19, 09:41:40</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/29/Windows下生成PDF/" title="生成复杂PDF-Windows篇">https://phantoms007.github.io/2019/04/29/Windows下生成PDF/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/04/29/Windows下生成PDF/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款，如何保证数据的一致性？/" title="并发扣款，如何保证数据的一致性？">https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -398,16 +433,10 @@ http://www.baidu.com ------ 要打印的网址
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/05/09/MySQL监控/">
-                    MySQL监控--初级入门
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/03/28/LNMP搭建-Linux搭建/">
-                    服务器集群-环境搭建（二）Nginx服务器搭建
+                <a href="/2019/08/20/动态规划算法-漫画版/">
+                    动态规划算法(漫画版)
                 </a>
             </div>
         
@@ -419,7 +448,7 @@ http://www.baidu.com ------ 要打印的网址
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成复杂PDF-Windows篇（一）环境安装"><span class="toc-number">1.</span> <span class="toc-text">生成复杂PDF-Windows篇（一）环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装-wkhtmltopdf"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装 wkhtmltopdf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能测试"><span class="toc-number">1.3.</span> <span class="toc-text">功能测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令解析"><span class="toc-number">1.4.</span> <span class="toc-text">命令解析</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#并发扣款，如何保证数据的一致性"><span class="toc-number">1.</span> <span class="toc-text">并发扣款，如何保证数据的一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载说明"><span class="toc-number">1.1.</span> <span class="toc-text">转载说明</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -446,7 +475,7 @@ http://www.baidu.com ------ 要打印的网址
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/04/29/Windows下生成PDF/" data-title="生成复杂PDF-Windows篇" data-url="https://phantoms007.github.io/2019/04/29/Windows下生成PDF/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/09/19/并发扣款，如何保证数据的一致性？/" data-title="并发扣款，如何保证数据的一致性？" data-url="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -469,15 +498,13 @@ http://www.baidu.com ------ 要打印的网址
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/05/09/MySQL监控/" title="上一篇: MySQL监控--初级入门">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/03/28/LNMP搭建-Linux搭建/" title="下一篇: 服务器集群-环境搭建（二）Nginx服务器搭建">
+            <a href="/2019/08/20/动态规划算法-漫画版/" title="下一篇: 动态规划算法(漫画版)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
