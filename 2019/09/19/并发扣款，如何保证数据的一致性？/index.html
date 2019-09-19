@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="随笔小记">
 <meta property="og:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856667567.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856719788.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856732624.png">
-<meta property="og:updated_time" content="2019-09-19T01:58:19.820Z">
+<meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856667567.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856719788.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856732624.png">
+<meta property="og:updated_time" content="2019-09-19T02:18:02.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发扣款，如何保证数据的一致性？">
 <meta name="twitter:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
-<meta name="twitter:image" content="https://phantoms007.github.io/img/screenshot_1568856667567.png">
+<meta name="twitter:image" content="https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856667567.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -371,13 +371,13 @@
 <p>在分布式环境中，如果并发量很大，这种“查询+修改”的业务有一定概率出现数据不一致。  </p>
 <p>极限情况下，可能出现这样的异常流程：</p>
 <p><strong>步骤一</strong>，业务1和业务2并发查询余额，是100元。</p>
-<p><img src="/img/screenshot_1568856667567.png" alt></p>
+<p><img src="/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856667567.png" alt></p>
 <p><em>画外音：这些并发查询，是在不同的站点实例/服务实例上完成的，进程内互斥锁肯定解决不了。</em>  </p>
 <p><strong>步骤二</strong>，业务1和业务2并发进行逻辑计算，算出各自业务的余额，假设业务1算出的余额是28元，业务2算出的余额是38元。</p>
-<p><img src="/img/screenshot_1568856719788.png" alt></p>
+<p><img src="/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856719788.png" alt></p>
 <p><strong>步骤三</strong>，业务1对数据库中的余额先进行修改，设置成28元。</p>
 <p>业务2对数据库中的余额后进行修改，设置成38元。</p>
-<p><img src="/img/screenshot_1568856732624.png" alt></p>
+<p><img src="/2019/09/19/并发扣款，如何保证数据的一致性？/screenshot_1568856732624.png" alt></p>
 <p>此时异常出现了，原有金额100元，业务1扣除了72元，业务2扣除了62元，最后剩余38元。<br><em>画外音：**假设业务1先写回余额，业务2再写回余额。</em></p>
 <p><strong>常见的解决方案？</strong></p>
 <p>对于此案例，同一个用户，并发扣款时，有小概率会出现异常，可以对每一个用户进行分布式锁互斥，例如：在redis/zk里抢到一个key才能继续操作，否则禁止操作。  </p>
@@ -420,7 +420,7 @@
         <p><span>本文标题:</span><a href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-09-19, 09:35:18</p>
-        <p><span>最后更新:</span>2019-09-19, 09:58:19</p>
+        <p><span>最后更新:</span>2019-09-19, 10:18:02</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款，如何保证数据的一致性？/" title="并发扣款，如何保证数据的一致性？">https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -434,6 +434,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">
+                    并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -500,7 +506,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" title="上一篇: 并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -512,7 +520,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
 
 
 

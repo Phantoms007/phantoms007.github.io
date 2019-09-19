@@ -15,18 +15,14 @@
 
 
 
-<meta name="description" content="LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;">
-<meta name="keywords" content="Linux,Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务器集群-环境搭建（一）虚拟机安装精简centos7.2">
-<meta property="og:url" content="https://phantoms007.github.io/2019/03/27/虚拟机安装centos/index.html">
+<meta property="og:title" content="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">
+<meta property="og:url" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/index.html">
 <meta property="og:site_name" content="随笔小记">
-<meta property="og:description" content="LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-19T14:22:46.170Z">
+<meta property="og:updated_time" content="2019-09-19T02:14:32.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="服务器集群-环境搭建（一）虚拟机安装精简centos7.2">
-<meta name="twitter:description" content="LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2准备工作 虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择; 镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;">
+<meta name="twitter:title" content="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +54,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>服务器集群-环境搭建（一）虚拟机安装精简centos7.2 | 随笔小记</title>
+<title>并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！ | 随笔小记</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -301,11 +297,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-虚拟机安装centos" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/03/27/虚拟机安装centos/" class="article-date">
-      <time datetime="2019-03-27T14:25:19.000Z" itemprop="datePublished">2019-03-27</time>
+      <a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" class="article-date">
+      <time datetime="2019-09-19T02:14:31.000Z" itemprop="datePublished">2019-09-19</time>
 </a>
 
 
@@ -320,7 +316,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      服务器集群-环境搭建（一）虚拟机安装精简centos7.2
+      并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！
     </h1>
   
 
@@ -328,16 +324,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -345,44 +333,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <excerpt in index | 首页摘要>
-
-
-<h2 id="LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7-2"><a href="#LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7-2" class="headerlink" title="LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2"></a>LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>虚拟机：个人使用是旧版的vmwareworkstation10，虚拟机根据自己习惯选择;</li>
-<li>镜像文件：下载 centos7.2版本，CentOS-7-x86_64-DVD-1511.iso;</li>
-</ol>
-<a id="more"></a>
-<p><the rest of contents | 余下全文></the></p>
-<h3 id="开始安装-VM虚拟机"><a href="#开始安装-VM虚拟机" class="headerlink" title="开始安装 VM虚拟机"></a>开始安装 VM虚拟机</h3><ol>
-<li><p>为了避免丢失重要数据，建议找一个比较空闲的分区，新建文件夹centos7.2;</p>
-</li>
-<li><p>打开虚拟机，新建虚拟机，典型 -&gt; 选择新建一个空白硬盘 -&gt; 选择Linux系统，版本选择Centos 64位 -&gt; 安装位置选择刚刚新建的文件夹 centos7.2 -&gt; 磁盘大小默认20G即可，选择将虚拟磁盘存储为单个文件</p>
-</li>
-<li><p>自定义硬件：</p>
-<pre><code>内存：内存默认1G,但在搭建LNMP环境的时候，为了提高编译安装的速度，可以根据自己物理机内存多划分点给虚拟机，8G物理机可以划分3G左右。
-
-处理器；1核即可；
-
-CD/DVD：勾选启动时连接，勾选使用ISO镜像，选择刚刚下载的镜像。
-
-网络适配器：勾选启动时连接，勾选自定义特定虚拟网络，勾选VMnet1(NAT模式);
-
-USB控制器：默认即可;
-
-声卡：（声卡用不到，点击下面的移除）;
-
-打印机：（打印机用不到，点击下面的移除）;
-
-显示器：默认即可;
-</code></pre></li>
-<li><p>点击 完成，空白虚拟机创建完成。</p>
-</li>
-</ol>
-<h3 id="开机安装-Centos"><a href="#开机安装-Centos" class="headerlink" title="开机安装 Centos"></a>开机安装 Centos</h3><ol>
-<li>测试</li>
-</ol>
-</excerpt>
+        
       
     </div>
     
@@ -390,13 +341,13 @@ USB控制器：默认即可;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></p>
+        <p><span>本文标题:</span><a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
-        <p><span>发布时间:</span>2019-03-27, 22:25:19</p>
-        <p><span>最后更新:</span>2019-08-19, 22:22:46</p>
+        <p><span>发布时间:</span>2019-09-19, 10:14:31</p>
+        <p><span>最后更新:</span>2019-09-19, 10:14:32</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/03/27/虚拟机安装centos/" title="服务器集群-环境搭建（一）虚拟机安装精简centos7.2">https://phantoms007.github.io/2019/03/27/虚拟机安装centos/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/03/27/虚拟机安装centos/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" title="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -408,16 +359,10 @@ USB控制器：默认即可;
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/03/28/LNMP搭建-Linux搭建/">
-                    服务器集群-环境搭建（二）Nginx服务器搭建
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/12/Linxu常用工具安装/">
-                    Linxu常用工具安装
+                <a href="/2019/09/19/并发扣款，如何保证数据的一致性？/">
+                    并发扣款，如何保证数据的一致性？
                 </a>
             </div>
         
@@ -429,7 +374,7 @@ USB控制器：默认即可;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7-2"><span class="toc-number">1.</span> <span class="toc-text">LNMP服务器集群-环境搭建（一）虚拟机安装精简centos7.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始安装-VM虚拟机"><span class="toc-number">1.2.</span> <span class="toc-text">开始安装 VM虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开机安装-Centos"><span class="toc-number">1.3.</span> <span class="toc-text">开机安装 Centos</span></a></li></ol></li></ol>
+            
         
     </div>
     <style>
@@ -456,7 +401,7 @@ USB控制器：默认即可;
     
       <div class="duoshuo" id="comments">
     <div id="comment-box"></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/27/虚拟机安装centos/" data-title="服务器集群-环境搭建（一）虚拟机安装精简centos7.2" data-url="https://phantoms007.github.io/2019/03/27/虚拟机安装centos/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" data-title="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！" data-url="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -479,15 +424,13 @@ USB控制器：默认即可;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/03/28/LNMP搭建-Linux搭建/" title="上一篇: 服务器集群-环境搭建（二）Nginx服务器搭建">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/12/Linxu常用工具安装/" title="下一篇: Linxu常用工具安装">
+            <a href="/2019/09/19/并发扣款，如何保证数据的一致性？/" title="下一篇: 并发扣款，如何保证数据的一致性？">
                 <i class="fa fa-angle-right"></i>
             </a>
         

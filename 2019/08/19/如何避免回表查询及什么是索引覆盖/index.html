@@ -23,19 +23,19 @@
 <meta property="og:site_name" content="随笔小记">
 <meta property="og:description" content="如何避免回表查询及什么是索引覆盖转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA仅作学习用，如有侵权告删。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566226586772.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227033882.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227165722.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227234422.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227310812.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227369772.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227644825.png">
-<meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1566227569921.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566226586772.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227033882.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227165722.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227234422.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227310812.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227369772.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227644825.png">
+<meta property="og:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227569921.png">
 <meta property="og:updated_time" content="2019-08-19T15:18:56.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何避免回表查询及什么是索引覆盖">
 <meta name="twitter:description" content="如何避免回表查询及什么是索引覆盖转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA仅作学习用，如有侵权告删。">
-<meta name="twitter:image" content="https://phantoms007.github.io/img/screenshot_1566226586772.png">
+<meta name="twitter:image" content="https://phantoms007.github.io/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566226586772.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -380,7 +380,7 @@
 <p><em>3, zhangsan, m, A</em></p>
 <p><em>5, lisi, m, A</em></p>
 <p><em>9, wangwu, f, B</em></p>
-<p><img src="/img/screenshot_1566226586772.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566226586772.png" alt></p>
 <p>两个B+树索引分别如上图：</p>
 <p>（1）id为PK，聚集索引，叶子节点存储行记录；</p>
 <p>（2）name为KEY，普通索引，叶子节点存储PK值，即id；</p>
@@ -389,7 +389,7 @@
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from t where name=&apos;lisi&apos;;</span><br></pre></td></tr></table></figure>
 <p><strong>是如何执行的呢？</strong></p>
-<p><img src="/img/screenshot_1566227033882.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227033882.png" alt></p>
 <p>如<strong>粉红色</strong>路径，需要扫码两遍索引树：</p>
 <p>（1）先通过普通索引定位到主键值id=5；</p>
 <p>（2）在通过聚集索引定位到行记录；</p>
@@ -398,34 +398,34 @@
 <p>额，楼主并没有在MySQL的官网找到这个概念。</p>
 <p><em>画外音：治学严谨吧？</em></p>
 <p>借用一下SQL-Server官网的说法。</p>
-<p><img src="/img/screenshot_1566227165722.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227165722.png" alt></p>
 <p>MySQL官网，类似的说法出现在explain查询计划优化章节，即explain的输出结果Extra字段为Using index时，能够触发索引覆盖。  </p>
-<p><img src="/img/screenshot_1566227234422.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227234422.png" alt></p>
 <p>不管是SQL-Server官网，还是MySQL官网，都表达了：只需要在一棵索引树上就能获取SQL所需的所有列数据，无需回表，速度更快。</p>
 <p><strong>三、如何实现索引覆盖？</strong></p>
 <p>常见的方法是：将被查询的字段，建立到联合索引里去。</p>
 <p>仍是《<a href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=2651962587&amp;idx=1&amp;sn=d197aea0090ce93b156e0774c6dc3019&amp;chksm=bd2d09078a5a801138922fb5f2b9bb7fdaace7e594d55f45ce4b3fc25cbb973bbc9b2deb2c31&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">迅猛定位低效SQL？</a>》中的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table user (</span><br><span class="line">id int primary key,</span><br><span class="line">name varchar(20),</span><br><span class="line">sex varchar(5),</span><br><span class="line">index(name)</span><br><span class="line">)engine=innodb;</span><br></pre></td></tr></table></figure>
 <p>第一个SQL语句：</p>
-<p><img src="/img/screenshot_1566227310812.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227310812.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,name from user where name=&apos;shenjian&apos;;</span><br></pre></td></tr></table></figure>
 <p>能够命中name索引，索引叶子节点存储了主键id，通过name的索引树即可获取id和name，无需回表，符合索引覆盖，效率较高。  </p>
 <p><em>画外音，Extra：<strong>Using index</strong>。</em></p>
 <p>第二个SQL语句：                     </p>
-<p><img src="/img/screenshot_1566227369772.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227369772.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,name,sex from user where name=&apos;shenjian&apos;;</span><br></pre></td></tr></table></figure>
 <p>能够命中name索引，索引叶子节点存储了主键id，但sex字段必须回表查询才能获取到，不符合索引覆盖，需要再次通过id值扫码聚集索引获取sex字段，效率会降低。  </p>
 <p><em>画外音，Extra：<strong>Using index condition</strong>。</em></p>
 <p>如果把(name)单列索引升级为联合索引(name, sex)就不同了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table user (</span><br><span class="line">id int primary key,</span><br><span class="line">name varchar(20),</span><br><span class="line">sex varchar(5),</span><br><span class="line">index(name, sex)</span><br><span class="line">)engine=innodb;</span><br></pre></td></tr></table></figure>
-<p><img src="/img/screenshot_1566227644825.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227644825.png" alt></p>
 <p>可以看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,name ... where name=&apos;shenjian&apos;;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,name,sex ... where name=&apos;shenjian&apos;;</span><br></pre></td></tr></table></figure>
 <p>都能够命中索引覆盖，无需回表。  </p>
 <p><em>画外音，Extra：<strong>Using index</strong>。</em></p>
 <p><strong>四、哪些场景可以利用索引覆盖来优化SQL？</strong></p>
 <p><strong>场景1：全表count查询优化</strong></p>
-<p><img src="/img/screenshot_1566227569921.png" alt></p>
+<p><img src="/2019/08/19/如何避免回表查询及什么是索引覆盖/screenshot_1566227569921.png" alt></p>
 <p>原表为：  </p>
 <p><em>user(PK id, name, sex)；</em></p>
 <p>直接：</p>
@@ -550,7 +550,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
 
 
 
