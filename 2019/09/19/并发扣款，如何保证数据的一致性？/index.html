@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856667567.png">
 <meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856719788.png">
 <meta property="og:image" content="https://phantoms007.github.io/img/screenshot_1568856732624.png">
-<meta property="og:updated_time" content="2019-09-19T01:41:40.150Z">
+<meta property="og:updated_time" content="2019-09-19T01:58:19.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发扣款，如何保证数据的一致性？">
 <meta name="twitter:description" content="并发扣款，如何保证数据的一致性转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw仅作学习用，如有侵权告删。">
@@ -355,13 +355,16 @@
 <a id="more"></a>
 <the rest of contents | 余下全文>
 
-<p>\===<br>有个业务，同一个用户在并发 “查询，逻辑计算，扣款” 的情况下，余额可能出现不一致，请问有什么优化方法么？<br>\===  </p>
-<p><strong>扣款的业务场景是怎样的？</strong></p>
+
+<h4 id="问题：有个业务，同一个用户在并发-“查询，逻辑计算，扣款”-的情况下，余额可能出现不一致，请问有什么优化方法么？"><a href="#问题：有个业务，同一个用户在并发-“查询，逻辑计算，扣款”-的情况下，余额可能出现不一致，请问有什么优化方法么？" class="headerlink" title="问题：有个业务，同一个用户在并发 “查询，逻辑计算，扣款” 的情况下，余额可能出现不一致，请问有什么优化方法么？"></a>问题：有个业务，同一个用户在并发 “查询，逻辑计算，扣款” 的情况下，余额可能出现不一致，请问有什么优化方法么？</h4><p><strong>扣款的业务场景是怎样的？</strong></p>
 <p>用户购买商品的过程中，要对余额进行查询与修改，大致的业务流程如下：</p>
-<p><strong>第一步</strong>，从数据库查询用户现有余额：<br><em>SELECT money FROM t_yue WHERE uid=$uid;</em><br>不妨设查询出来的$old_money=100元。</p>
+<p><strong>第一步</strong>，从数据库查询用户现有余额：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT money FROM t_yue WHERE uid=$uid;</span><br></pre></td></tr></table></figure>
+<p>不妨设查询出来的$old_money=100元。</p>
 <p><strong>第二步</strong>，业务层实施业务逻辑计算，比如：<br>（1）先查询购买商品的价格，例如是80元；<br>（2）再查询产品是否有活动，以及活动折扣，例如是9折；<br>（3）比对余额是否足够，足够时才往下走；</p>
-<p><em>if($old_money&gt; 80\</em>0.9){<br>    $new_money=$old_money-80*0.9=28<br>} else {<br>    return “Not enough minerals”;<br>}*</p>
-<p><strong>第三步</strong>，将数据库中的余额进行修改。<br><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid;</em>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if($old_money &gt; 80*0.9)&#123;  </span><br><span class="line">    $new_money = $old_money-80*0.9 = 28  </span><br><span class="line">&#125; else &#123;  </span><br><span class="line">    return &quot;Not enough minerals&quot;;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>第三步</strong>，将数据库中的余额进行修改。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new_money WHERE uid=$uid;</span><br></pre></td></tr></table></figure>
 <p>在并发量低的情况下，这个流程没有任何问题，原有金额100元，购买了80元的九折商品（72元），剩余28元。</p>
 <p><strong>同一个用户，并发扣款可能出现什么问题？  
 </strong></p>
@@ -389,22 +392,21 @@
 <p>在set写回的时候，加上初始状态的条件compare，只有初始状态不变时，才允许set写回成功，Compare And Set（CAS），是一种常见的降低读写锁冲突，保证数据一致性的方法。</p>
 <p><strong>此时业务要怎么改？</strong></p>
 <p>使用CAS解决高并发时数据一致性问题，只需要在进行set操作时，compare初始值，如果初始值变换，不允许set成功。  </p>
-<p>具体到这个case，只需要将：<br><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid;</em><br>升级为：</p>
-<p><em>UPDATE t_yue SET money=$new_money WHERE uid=$uid<strong>AND money=$old_money</strong>;**<br>即可。  
-</em></p>
+<p>具体到这个case，只需要将：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new\_money WHERE uid=$uid;</span><br></pre></td></tr></table></figure>
+<p>升级为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=$new_money WHERE uid=$uid AND money=$old_money;</span><br></pre></td></tr></table></figure>
+<p>即可。  </p>
 <p>并发操作发生时：</p>
-<p>业务1执行：<br><em>UPDATE t_yue SET money=28 WHERE uid=$uid AND money=100;</em></p>
-<p>业务2执行：<br><em>UPDATE t_yue SET money=38 WHERE uid=$uid AND money=100;</em></p>
+<p>业务1执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=28 WHERE uid=$uid AND money=100;</span><br></pre></td></tr></table></figure></p>
+<p>业务2执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_yue SET money=38 WHERE uid=$uid AND money=100;</span><br></pre></td></tr></table></figure></p>
 <p>这两个操作同时进行时，只可能有一个执行成功。</p>
 <p><strong>怎么判断哪个并发执行成功，哪个并发执行失败呢？</strong></p>
 <p>set操作，其实无所谓成功或者失败，业务能通过affect rows来判断：</p>
-<ul>
-<li><p>写回成功的，affect rows为1</p>
-</li>
-<li><p>写回失败的，affect rows为0</p>
-</li>
-</ul>
-<p><strong>总结</strong></p>
+<pre><code>写回成功的，affect rows为1
+
+写回失败的，affect rows为0
+</code></pre><p><strong>总结</strong></p>
 <p>高并发“查询并修改”的场景，可以用CAS（Compare and Set）的方式解决数据一致性问题。对应到业务，即在set的时候，加上初始条件的比对即可。  </p>
 <p>优化不难，只改了半行SQL，但确实能解决问题。</p>
 </the></excerpt>
@@ -418,7 +420,7 @@
         <p><span>本文标题:</span><a href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-09-19, 09:35:18</p>
-        <p><span>最后更新:</span>2019-09-19, 09:41:40</p>
+        <p><span>最后更新:</span>2019-09-19, 09:58:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款，如何保证数据的一致性？/" title="并发扣款，如何保证数据的一致性？">https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款，如何保证数据的一致性？/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -448,7 +450,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#并发扣款，如何保证数据的一致性"><span class="toc-number">1.</span> <span class="toc-text">并发扣款，如何保证数据的一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载说明"><span class="toc-number">1.1.</span> <span class="toc-text">转载说明</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#并发扣款，如何保证数据的一致性"><span class="toc-number">1.</span> <span class="toc-text">并发扣款，如何保证数据的一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载说明"><span class="toc-number">1.1.</span> <span class="toc-text">转载说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题：有个业务，同一个用户在并发-“查询，逻辑计算，扣款”-的情况下，余额可能出现不一致，请问有什么优化方法么？"><span class="toc-number">1.1.1.</span> <span class="toc-text">问题：有个业务，同一个用户在并发 “查询，逻辑计算，扣款” 的情况下，余额可能出现不一致，请问有什么优化方法么？</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
