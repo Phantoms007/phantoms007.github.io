@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860427424.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860452077.png">
 <meta property="og:image" content="https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860488009.png">
-<meta property="og:updated_time" content="2019-09-19T03:18:37.842Z">
+<meta property="og:updated_time" content="2019-09-19T03:33:23.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">
 <meta name="twitter:description" content="并发扣款一致性优化，CAS下ABA问题转载说明本文转自微信公众号 https://mp.weixin.qq.com/s/03ndQ7k2ehQzYVDYgCpWHQ仅作学习用，如有侵权告删。">
@@ -367,8 +367,7 @@
 <p>（3）能否借助<strong>redis事务</strong>来扣减余额；</p>
 <p><em>画外音：<strong>请务必阅读前序文章：</strong>《</em><a href="[https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw](https://mp.weixin.qq.com/s/QSpBDlW1KktJ8iHaYcO2rw">并发扣款，如何保证数据的一致性？</a>)<em>》。</em></p>
 <p>问题比较多，今天先聊第一个问题，ABA。  </p>
-<p><strong>什么是ABA问题？</strong></p>
-<p>CAS乐观锁机制确实能够提升吞吐，并保证一致性，但在极端情况下可能会出现ABA问题。</p>
+<h3 id="什么是ABA问题？"><a href="#什么是ABA问题？" class="headerlink" title="什么是ABA问题？"></a>什么是ABA问题？</h3><p>CAS乐观锁机制确实能够提升吞吐，并保证一致性，但在极端情况下可能会出现ABA问题。</p>
 <p>考虑如下操作：</p>
 <p><strong> * </strong> 并发1（上）：获取出数据的初始值是A，后续计划实施CAS乐观锁，期望数据仍是A的时候，修改才能成功</p>
 <p><strong> * </strong> 并发2：将数据修改成B</p>
@@ -387,8 +386,7 @@
 <p>并发1（下）：实施CAS乐观锁，发现栈顶还是“A1”，于是修改为A2</p>
 <p><img src="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/screenshot_1568860488009.png" alt></p>
 <p>此时会出现系统错误，因为此“A1”非彼“A1”</p>
-<p><strong>ABA问题可以怎么优化？</strong></p>
-<p>ABA问题导致的原因，是CAS过程中只简单进行了“值”的校验，再有些情况下，“值”相同不会引入错误的业务逻辑（例如余额），有些情况下，“值”虽然相同，却已经不是原来的数据了（例如堆栈）。</p>
+<h3 id="ABA问题可以怎么优化？"><a href="#ABA问题可以怎么优化？" class="headerlink" title="ABA问题可以怎么优化？"></a>ABA问题可以怎么优化？</h3><p>ABA问题导致的原因，是CAS过程中只简单进行了“值”的校验，再有些情况下，“值”相同不会引入错误的业务逻辑（例如余额），有些情况下，“值”虽然相同，却已经不是原来的数据了（例如堆栈）。</p>
 <p>因此，CAS不能只比对“值”，还必须确保是原来的数据，才能修改成功。</p>
 <p><strong>常见的实践</strong>是，将“值”比对，升级为“版本号”的比对，一个数据一个版本，<strong>版本变化，即使值相同，也不应该修改成功</strong>。</p>
 <p>余额并发读写例子，引入版本号的具体实践如下：</p>
@@ -424,7 +422,7 @@
         <p><span>本文标题:</span><a href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
         <p><span>发布时间:</span>2019-09-19, 10:14:31</p>
-        <p><span>最后更新:</span>2019-09-19, 11:18:37</p>
+        <p><span>最后更新:</span>2019-09-19, 11:33:23</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/" title="并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！">https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/</a>
             <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -454,7 +452,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#并发扣款一致性优化，CAS下ABA问题"><span class="toc-number">1.</span> <span class="toc-text">并发扣款一致性优化，CAS下ABA问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载说明"><span class="toc-number">1.1.</span> <span class="toc-text">转载说明</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#并发扣款一致性优化，CAS下ABA问题"><span class="toc-number">1.</span> <span class="toc-text">并发扣款一致性优化，CAS下ABA问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#转载说明"><span class="toc-number">1.1.</span> <span class="toc-text">转载说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是ABA问题？"><span class="toc-number">1.2.</span> <span class="toc-text">什么是ABA问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABA问题可以怎么优化？"><span class="toc-number">1.3.</span> <span class="toc-text">ABA问题可以怎么优化？</span></a></li></ol></li></ol>
         
     </div>
     <style>
