@@ -214,7 +214,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ABA/">ABA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扣款/">扣款</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/秒杀/">秒杀</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锁/">锁</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ABA/">ABA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySql/">MySql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sphinx/">Sphinx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/innodb/">innodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扣款/">扣款</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/秒杀/">秒杀</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锁/">锁</a></li></ul>
                     </div>
                 </section>
                 
@@ -302,6 +302,75 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-innodb-添加Sphinx中文快速搜索支持" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/" class="article-date">
+      <time datetime="2020-04-26T06:15:44.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/">innodb 添加Sphinx中文快速搜索支持</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <excerpt in index | 首页摘要>
+
+
+
+
+<h2 id="如何给mysql-innodb表添加Sphinx中文快速搜索支持"><a href="#如何给mysql-innodb表添加Sphinx中文快速搜索支持" class="headerlink" title="如何给mysql innodb表添加Sphinx中文快速搜索支持"></a>如何给mysql innodb表添加Sphinx中文快速搜索支持</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于innodb表不能做全文索引，因此模糊查询的效率很低，几十万行的数据like查询一般是分钟级的，<br>而sphinx则很好的解决了这个问题，可以在0.几秒内完成这个查询，下面看下如何给innodb表添加sphinx支持</p></excerpt>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySql/">MySql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sphinx/">Sphinx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/innodb/">innodb</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-php简单秒杀场景" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -907,81 +976,6 @@
       
         <p class="article-more-link">
           <a href="/2019/05/05/hello-world/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Windows下生成PDF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/04/29/Windows下生成PDF/" class="article-date">
-      <time datetime="2019-04-29T02:09:19.000Z" itemprop="datePublished">2019-04-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <excerpt in index | 首页摘要>
-
-<p>前言：wkhtmltopdf是一个命令行应用程序,它从HTML文档提取数据并创建图像或PDF文件从他们使用QT Webkit渲染引擎。Linux下环境配置及操作权限等涉及较多，故此篇先做一下windows的方案。</p>
-<h2 id="生成复杂PDF-Windows篇（一）环境安装"><a href="#生成复杂PDF-Windows篇（一）环境安装" class="headerlink" title="生成复杂PDF-Windows篇（一）环境安装"></a>生成复杂PDF-Windows篇（一）环境安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>操作系统：Windows 操作系统</li>
-<li>软件：wkhtmltopdf —— 下载地址：<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">https://wkhtmltopdf.org/downloads.html</a></li>
-<li>参考文档：<a href="https://wkhtmltopdf.org/usage/wkhtmltopdf.txt" target="_blank" rel="noopener">https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</a></li>
-</ol></excerpt>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDF/">PDF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/04/29/Windows下生成PDF/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

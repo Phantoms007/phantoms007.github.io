@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Phantoms007">
+
+
+
+<meta name="description" content="如何给mysql innodb表添加Sphinx中文快速搜索支持前言由于innodb表不能做全文索引，因此模糊查询的效率很低，几十万行的数据like查询一般是分钟级的，而sphinx则很好的解决了这个问题，可以在0.几秒内完成这个查询，下面看下如何给innodb表添加sphinx支持">
+<meta name="keywords" content="MySql,innodb,Sphinx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="innodb 添加Sphinx中文快速搜索支持">
+<meta property="og:url" content="https://phantoms007.github.io/2020/04/26/innodb-添加Sphinx中文快速搜索支持/index.html">
+<meta property="og:site_name" content="随笔小记">
+<meta property="og:description" content="如何给mysql innodb表添加Sphinx中文快速搜索支持前言由于innodb表不能做全文索引，因此模糊查询的效率很低，几十万行的数据like查询一般是分钟级的，而sphinx则很好的解决了这个问题，可以在0.几秒内完成这个查询，下面看下如何给innodb表添加sphinx支持">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-26T06:57:34.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="innodb 添加Sphinx中文快速搜索支持">
+<meta name="twitter:description" content="如何给mysql innodb表添加Sphinx中文快速搜索支持前言由于innodb表不能做全文索引，因此模糊查询的效率很低，几十万行的数据like查询一般是分钟级的，而sphinx则很好的解决了这个问题，可以在0.几秒内完成这个查询，下面看下如何给innodb表添加sphinx支持">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="随笔小记" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/AcFun.png">
+
+
+
+    <link href="/js/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="/js/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="/js/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="/js/font-awesome.min.css" rel="stylesheet">
+
+
+<title>innodb 添加Sphinx中文快速搜索支持 | 随笔小记</title>
+
+<script src="/js/jquery-2.2.4.min.js"></script>
+<script src="/js/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "/js/jquery.fancybox.min.js",
+        scrollreveal: "/js/scrollreveal.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "/js/jquery-ui.min.js", "/js/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?[object Object]";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/AcFun.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Phantoms007</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">路漫漫其修远兮，吾将架构而求索</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/203406918@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="/zhihu" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="/" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="#" title="QQ"></a>
+                            
+                                <a class="fa 微信" href="/Wechat" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ABA/">ABA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CAS/">CAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySql/">MySql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sphinx/">Sphinx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/innodb/">innodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并发/">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扣款/">扣款</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/秒杀/">秒杀</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/锁/">锁</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">路漫漫其修远兮，吾将架构而求索</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantoms007</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/AcFun.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Phantoms007</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">路漫漫其修远兮，吾将架构而求索</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/203406918@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="/zhihu" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="/" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="#" title="QQ"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/Wechat" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-innodb-添加Sphinx中文快速搜索支持" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/" class="article-date">
+      <time datetime="2020-04-26T06:15:44.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      innodb 添加Sphinx中文快速搜索支持
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySql/">MySql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sphinx/">Sphinx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/innodb/">innodb</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <excerpt in index | 首页摘要>
+
+
+
+
+<h2 id="如何给mysql-innodb表添加Sphinx中文快速搜索支持"><a href="#如何给mysql-innodb表添加Sphinx中文快速搜索支持" class="headerlink" title="如何给mysql innodb表添加Sphinx中文快速搜索支持"></a>如何给mysql innodb表添加Sphinx中文快速搜索支持</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于innodb表不能做全文索引，因此模糊查询的效率很低，几十万行的数据like查询一般是分钟级的，<br>而sphinx则很好的解决了这个问题，可以在0.几秒内完成这个查询，下面看下如何给innodb表添加sphinx支持</p>
+<a id="more"></a>
+<the rest of contents | 余下全文>
+
+
+<h3 id="一、安装sphinx"><a href="#一、安装sphinx" class="headerlink" title="一、安装sphinx"></a>一、安装sphinx</h3><p>官方下载地址：<a href="http://sphinxsearch.com/downloads/archive/" target="_blank" rel="noopener">http://sphinxsearch.com/downloads/archive/</a></p>
+<p>由于coreseek4.1要求2.0.2的版本，我的操作系统是centos5.4，所以选择RHEL/CentOS 5.x.x86_64 RPM  2.0.2-beta这个版本下载，运行命令：<br>rpm -ivh sphinx-2.0.2-1.el5.x86_64.rpm<br>sphinx安装完毕</p>
+<h3 id="二、安装mmseg"><a href="#二、安装mmseg" class="headerlink" title="二、安装mmseg"></a>二、安装mmseg</h3><p>下载coreseek4.1 源码包：<a href="http://www.coreseek.cn/uploads/csft/4.0/coreseek-4.1-beta.tar.gz" target="_blank" rel="noopener">http://www.coreseek.cn/uploads/csft/4.0/coreseek-4.1-beta.tar.gz</a></p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf coreseek-4.1-beta.tar.gz</span><br><span class="line">cd coreseek-4.1-beta</span><br><span class="line">cd mmseg-3.2.14</span><br><span class="line">./configure --prefix=/usr/local/mmseg</span><br></pre></td></tr></table></figure>
+</code></pre><p>编译如果出现错误：config.status: error: cannot find input file: src/Makefile.in 运行下面的命令：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aclocal</span><br><span class="line">libtoolize --force</span><br><span class="line">automake --add-missing</span><br><span class="line">autoconf</span><br><span class="line">autoheader</span><br><span class="line">make clean</span><br><span class="line">./configure --prefix=/usr/local/mmseg</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</code></pre><p>至此安装完毕</p>
+<h3 id="三、安装csft"><a href="#三、安装csft" class="headerlink" title="三、安装csft"></a>三、安装csft</h3><p>coreseek4.1源码解压后在mmseg-3.2.14同目录下还有个csft-4.1目录</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd csft-4.1</span><br><span class="line">sh buildconf.sh</span><br><span class="line">./configure --prefix=/usr/local/coreseek --with-mysql=/usr/local/mysql/ --with-mmseg=/usr/local/mmseg/ --with-mmseg-includes=/usr/local/mmseg/include/mmseg/ --with-mmseg-libs=/usr/local/mmseg/lib/</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="四、安装php的sphinxclient扩展"><a href="#四、安装php的sphinxclient扩展" class="headerlink" title="四、安装php的sphinxclient扩展"></a>四、安装php的sphinxclient扩展</h3><p>下载地址：<a href="http://pecl.php.net/get/sphinx-1.3.0.tgz" target="_blank" rel="noopener">http://pecl.php.net/get/sphinx-1.3.0.tgz</a></p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf sphinx-1.3.0.tgz</span><br><span class="line">cd sphinx-1.3.0</span><br><span class="line">/usr/local/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config</span><br></pre></td></tr></table></figure>
+</code></pre><p>如果出现错误：configure error: cannot find libsphinxclient headers</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/coreseek-4.1-beta/csft-4.1/api/libsphinxclient</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</code></pre><p>再回到sphinx-1.3.0目录下：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config --with-sphinx</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</code></pre><p>结束后会生成一个sphinx.so文件，将这个文件添加到php.ini文件中</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service php-fpm restart</span><br></pre></td></tr></table></figure>
+</code></pre><p>至此，环境都已经搭建好了，接下来将mysql数据表生成sphinx索引，以提供搜索。</p>
+<h3 id="五、coreseek配置"><a href="#五、coreseek配置" class="headerlink" title="五、coreseek配置"></a>五、coreseek配置</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/coreseek/etc</span><br><span class="line">cp sphinx-min.conf.dist csft.conf       //coreseek默认加载csft.conf配置</span><br></pre></td></tr></table></figure>
+</code></pre><p>修改csft.conf如下：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">source src</span><br><span class="line">&#123;</span><br><span class="line">	type                    = mysql</span><br><span class="line">	sql_host                = host</span><br><span class="line">	sql_user                = user</span><br><span class="line">	sql_pass                = pass</span><br><span class="line">	sql_db                  = db</span><br><span class="line">	sql_port                = 3306  # optional, default is 3306</span><br><span class="line">	sql_query_pre           = SET NAMES utf8</span><br><span class="line">	sql_query               = SELECT id,title,content FROM article</span><br><span class="line">	sql_ranged_throttle     = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">index idx</span><br><span class="line">&#123;</span><br><span class="line">	source                  = src </span><br><span class="line">	path                    = /usr/local/coreseek/var/data/test</span><br><span class="line">	docinfo                 = extern</span><br><span class="line">	mlock                   = 0</span><br><span class="line">	morphology              = none</span><br><span class="line">	min_word_len            = 1</span><br><span class="line">	charset_type            = zh_cn.utf-8</span><br><span class="line">	charset_dictpath        = /usr/local/coreseek/dict 			#这个非常重要，要不然无法进行中文搜索</span><br><span class="line">	html_strip              = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">indexer</span><br><span class="line">&#123;</span><br><span class="line">	mem_limit               = 1024M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">searchd </span><br><span class="line">&#123;</span><br><span class="line">	listen                  = 3312</span><br><span class="line">	listen                  = 9306:mysql41</span><br><span class="line">	log                     = /usr/local/coreseek/var/log/searchd.log</span><br><span class="line">	query_log               = /usr/local/coreseek/var/log/query.log</span><br><span class="line">	read_timeout            = 5</span><br><span class="line">	client_timeout          = 300</span><br><span class="line">	max_children            = 30</span><br><span class="line">	pid_file                = /usr/local/coreseek/var/log/searchd.pid</span><br><span class="line">	max_matches             = 10000</span><br><span class="line">	seamless_rotate         = 1</span><br><span class="line">	preopen_indexes         = 1</span><br><span class="line">	unlink_old              = 1</span><br><span class="line">	mva_updates_pool        = 1M</span><br><span class="line">	max_packet_size         = 8M</span><br><span class="line">	max_filters             = 256</span><br><span class="line">	max_filter_values       = 4096</span><br><span class="line">	max_batch_queries       = 32</span><br><span class="line">	workers                 = threads # for RT to work</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="六、生成中文词库"><a href="#六、生成中文词库" class="headerlink" title="六、生成中文词库"></a>六、生成中文词库</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">charset_type            = zh_cn.utf-8</span><br><span class="line">charset_dictpath        = /usr/local/coreseek/dict 		#这个非常重要，要不然无法进行中文搜索</span><br></pre></td></tr></table></figure>
+</code></pre><p>上面这个配置中需要先生成中文词库，要不然无法按中文搜索，从mmseg安装目录下的etc目录中将uni.lib和mmseg.ini复制到/usr/loca/coreseek/dict目录中即可</p>
+<h3 id="七、开启搜索服务"><a href="#七、开启搜索服务" class="headerlink" title="七、开启搜索服务"></a>七、开启搜索服务</h3><p>好啦，现在可以生成索引和开启搜索服务了</p>
+<h4 id="1-生成索引"><a href="#1-生成索引" class="headerlink" title="1. 生成索引"></a>1. 生成索引</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/loca/coreseek/bin</span><br><span class="line">./indexer --all</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="2-开启搜索服务"><a href="#2-开启搜索服务" class="headerlink" title="2.开启搜索服务"></a>2.开启搜索服务</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/loca/coreseek/bin</span><br><span class="line">./searchd</span><br></pre></td></tr></table></figure>
+</code></pre><p>至此，我们已经给我们的表生成中文快速搜索服务了，可以用该命令测试：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./search 小说</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="八、php程序调用"><a href="#八、php程序调用" class="headerlink" title="八、php程序调用"></a>八、php程序调用</h3><p>现在来看下，如何在PHP里调用这个搜索服务，下面是简单的程序：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$s = new SphinxClient();</span><br><span class="line">$s-&gt;setServer(&quot;127.0.0.1&quot;, 3312);</span><br><span class="line">$s-&gt;setMatchMode(SPH_MATCH_ANY);</span><br><span class="line">$s-&gt;setMaxQueryTime(5000);</span><br><span class="line">$s-&gt;setLimits(0,10000, 10000);</span><br><span class="line">$result = $s-&gt;query(&quot;小说&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><p>终于OK啦！</p>
+</the></excerpt>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/">innodb 添加Sphinx中文快速搜索支持</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
+        <p><span>发布时间:</span>2020-04-26, 14:15:44</p>
+        <p><span>最后更新:</span>2020-04-26, 14:57:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/" title="innodb 添加Sphinx中文快速搜索支持">https://phantoms007.github.io/2020/04/26/innodb-添加Sphinx中文快速搜索支持/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2020/04/26/innodb-添加Sphinx中文快速搜索支持/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/10/08/php简单秒杀场景/">
+                    php redis简单秒杀场景
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何给mysql-innodb表添加Sphinx中文快速搜索支持"><span class="toc-number">1.</span> <span class="toc-text">如何给mysql innodb表添加Sphinx中文快速搜索支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一、安装sphinx"><span class="toc-number">1.2.</span> <span class="toc-text">一、安装sphinx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、安装mmseg"><span class="toc-number">1.3.</span> <span class="toc-text">二、安装mmseg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、安装csft"><span class="toc-number">1.4.</span> <span class="toc-text">三、安装csft</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、安装php的sphinxclient扩展"><span class="toc-number">1.5.</span> <span class="toc-text">四、安装php的sphinxclient扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、coreseek配置"><span class="toc-number">1.6.</span> <span class="toc-text">五、coreseek配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、生成中文词库"><span class="toc-number">1.7.</span> <span class="toc-text">六、生成中文词库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、开启搜索服务"><span class="toc-number">1.8.</span> <span class="toc-text">七、开启搜索服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-生成索引"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 生成索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-开启搜索服务"><span class="toc-number">1.8.2.</span> <span class="toc-text">2.开启搜索服务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八、php程序调用"><span class="toc-number">1.9.</span> <span class="toc-text">八、php程序调用</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2020/04/26/innodb-添加Sphinx中文快速搜索支持/" data-title="innodb 添加Sphinx中文快速搜索支持" data-url="https://phantoms007.github.io/2020/04/26/innodb-添加Sphinx中文快速搜索支持/"></div>
+    <script>
+        var duoshuoQuery = {short_name:""};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/10/08/php简单秒杀场景/" title="下一篇: php redis简单秒杀场景">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/innodb-添加Sphinx中文快速搜索支持/">innodb 添加Sphinx中文快速搜索支持</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/08/php简单秒杀场景/">php redis简单秒杀场景</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/21/雪花算法及运用PHP/">雪花算法及运用PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！/">并发扣款一致性优化，CAS下ABA问题，这个话题还没聊完！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/19/并发扣款，如何保证数据的一致性？/">并发扣款，如何保证数据的一致性？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/20/动态规划算法-漫画版/">动态规划算法(漫画版)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/19/如何避免回表查询及什么是索引覆盖/">如何避免回表查询及什么是索引覆盖</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/17/Centos6.9 LAMP源码编译参考手册/">Centos7.3 LAMP源码编译参考手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/09/MySQL监控/">MySQL监控--初级入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/05/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/29/Windows下生成PDF/">生成复杂PDF-Windows篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/28/LNMP搭建-Linux搭建/">服务器集群-环境搭建（二）Nginx服务器搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/虚拟机安装centos/">服务器集群-环境搭建（一）虚拟机安装精简centos7.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/12/Linxu常用工具安装/">Linxu常用工具安装</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2020 Phantoms007
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="/js/require.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
