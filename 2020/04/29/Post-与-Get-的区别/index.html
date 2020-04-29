@@ -15,18 +15,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Qui">
-<meta name="keywords" content="Linux,Nginx">
+<meta name="description" content="常见的Post 和 Get的区别前言面试中经常被问到post与get的区别，一般回答都大同小异，很难戳到面试官的点，下面补充一些关于post与get的区别。">
+<meta name="keywords" content="Post,Get,前后交互,请求方式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://phantoms007.github.io/2019/05/05/hello-world/index.html">
+<meta property="og:title" content="Post 与 Get 的区别">
+<meta property="og:url" content="https://phantoms007.github.io/2020/04/29/Post-与-Get-的区别/index.html">
 <meta property="og:site_name" content="随笔小记">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Qui">
+<meta property="og:description" content="常见的Post 和 Get的区别前言面试中经常被问到post与get的区别，一般回答都大同小异，很难戳到面试官的点，下面补充一些关于post与get的区别。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-09T01:29:06.950Z">
+<meta property="og:image" content="https://phantoms007.github.io/2020/04/29/Post-与-Get-的区别/get与post.png">
+<meta property="og:updated_time" content="2020-04-29T09:56:08.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Qui">
+<meta name="twitter:title" content="Post 与 Get 的区别">
+<meta name="twitter:description" content="常见的Post 和 Get的区别前言面试中经常被问到post与get的区别，一般回答都大同小异，很难戳到面试官的点，下面补充一些关于post与get的区别。">
+<meta name="twitter:image" content="https://phantoms007.github.io/2020/04/29/Post-与-Get-的区别/get与post.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -61,7 +63,7 @@
 <link href="/js/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | 随笔小记</title>
+<title>Post 与 Get 的区别 | 随笔小记</title>
 
 <script src="/js/jquery-2.2.4.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
@@ -296,11 +298,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Post-与-Get-的区别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/05/05/hello-world/" class="article-date">
-      <time datetime="2019-05-05T09:08:43.704Z" itemprop="datePublished">2019-05-05</time>
+      <a href="/2020/04/29/Post-与-Get-的区别/" class="article-date">
+      <time datetime="2020-04-29T10:00:00.000Z" itemprop="datePublished">2020-04-29</time>
 </a>
 
 
@@ -315,7 +317,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Post 与 Get 的区别
     </h1>
   
 
@@ -326,7 +328,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Get/">Get</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Post/">Post</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前后交互/">前后交互</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/请求方式/">请求方式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -338,18 +340,63 @@
           
         <excerpt in index | 首页摘要>
 
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常见的Post-和-Get的区别"><a href="#常见的Post-和-Get的区别" class="headerlink" title="常见的Post 和 Get的区别"></a>常见的Post 和 Get的区别</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>面试中经常被问到post与get的区别，一般回答都大同小异，很难戳到面试官的点，下面补充一些关于post与get的区别。</p>
 <a id="more"></a>
 <the rest of contents | 余下全文>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+
+<h3 id="常见到的区别"><a href="#常见到的区别" class="headerlink" title="常见到的区别"></a>常见到的区别</h3><p>下面是常见的几条 Post 与 Get 的区别：</p>
+<ul>
+<li>get比post更不安全，因为参数直接暴露在URl中，所以不能用来传递敏感的信息。</li>
+<li>对参数的数据类型，get只接受ASCLL字符，而post没有限制</li>
+<li>get在URl中传递的参数是有长度限制的，而post没有</li>
+<li>get请求会被浏览器主动cache，而post不会除非手动设置</li>
+<li>get在浏览器回退时无请求的，而post会再次请求</li>
+<li>get参数通过URl传递，post放在request body中</li>
+<li>get请求只能进行url编码，而post支持多种编码方式</li>
+<li>get比post更快</li>
+</ul>
+<h3 id="W3C上的总结"><a href="#W3C上的总结" class="headerlink" title="W3C上的总结"></a>W3C上的总结</h3><h4 id="GET-方法："><a href="#GET-方法：" class="headerlink" title="GET 方法："></a>GET 方法：</h4><ul>
+<li>GET 请求可被缓存</li>
+<li>GET 请求保留在浏览器历史记录中</li>
+<li>GET 请求可被收藏为书签</li>
+<li>GET 请求不应在处理敏感数据时使用</li>
+<li>GET 请求有长度限制</li>
+<li>GET 请求只应当用于取回数据</li>
+</ul>
+<h4 id="POST-方法："><a href="#POST-方法：" class="headerlink" title="POST 方法："></a>POST 方法：</h4><ul>
+<li>POST 请求不会被缓存</li>
+<li>POST 请求不会保留在浏览器历史记录中</li>
+<li>POST 不能被收藏为书签</li>
+<li>POST 请求对数据长度没有要求</li>
+</ul>
+<h4 id="比较GET与POST"><a href="#比较GET与POST" class="headerlink" title="比较GET与POST:"></a>比较GET与POST:</h4><p><img src="/2020/04/29/Post-与-Get-的区别/get与post.png" alt></p>
+<h3 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h3><h4 id="误区1、GET在URl中传递的参数是有长度限制的，而POST没有"><a href="#误区1、GET在URl中传递的参数是有长度限制的，而POST没有" class="headerlink" title="误区1、GET在URl中传递的参数是有长度限制的，而POST没有"></a>误区1、GET在URl中传递的参数是有长度限制的，而POST没有</h4><p>首先，HTTP协议并未规定get和post的长度限制，get的最大长度限制是因为浏览器和web服务限制了URL的长度，不同的浏览器和web服务器，限制的最大长度不一样。<br>即使get有长度限制，也是限制整个URL的长度，而不仅仅是参数值数据长度，就要看各个浏览器厂家的规定或者根据web服务器的处理能力来决定的。</p>
+<p>以下就是对各种浏览器和web服务器的最大处理能力做一些说明：</p>
+<ul>
+<li>IE (Browser)：URL最大长度限制为2083个字符。</li>
+<li>Firefox (Browser)：对于Firefox浏览器URL的长度限制为65,536个字符。</li>
+<li>afari (Browser)：URL最大长度限制为 80,000个字符。</li>
+<li>Opera (Browser)：URL最大长度限制为190,000个字符。</li>
+<li>google (chrome)：URL最大长度限制为8182个字符。</li>
+<li>Apache (Server)：能接受最大url长度为8,192个字符。</li>
+<li>Microsoft Internet Information Server(IIS)：能接受最大url的长度为16,384个字符。</li>
+</ul>
+<p>为了符合所有标准，url的最好不好超过最低标准的2083个字符（2k+35）。当然在做客户端程序时，url并不展示给用户，只是个程序调用，这时长度只收web服务器的影响了。对于中文的传递，一个汉字最终编码后的字符长度是9个字符。</p>
+<p>最常见的form表单，浏览器默认的form表单，默认的content-type是application/x-www-form-urlencoded,提交的数据会按照key value的方式，jquery的ajax默认的也是这种content-type。<br>当然在post方式中添加querystring一定是可以接收的到，但是在get方式中加body参数就不一定能成功接收到了。</p>
+<h4 id="误区2、POST比GET更安全"><a href="#误区2、POST比GET更安全" class="headerlink" title="误区2、POST比GET更安全"></a>误区2、POST比GET更安全</h4><p>这里的安全是相对性，并不是真正意义上的安全，通过get提交的数据都将显示到url上，页面会被浏览器缓存，其他人查看历史记录会看到提交的数据，而post不会。<br>另外get提交数据还可能会造成Cross-site request forgery攻击。</p>
+<h4 id="误区3、为什么GET比POST快"><a href="#误区3、为什么GET比POST快" class="headerlink" title="误区3、为什么GET比POST快"></a>误区3、为什么GET比POST快</h4><p>post请求包含更多的请求头，（如content-type），但这影响不了多少，最重要的是post在真正接受接受数据之前会先将请求头发送给服务器进行确认，然后才是真正的发送数据。</p>
+<p>看看post的请求过程：<br>浏览器请求tcp连接（第一次握手）<br>服务器答应进行tcp连接（第二次握手）<br>浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）<br>服务器返回100 Continue响应<br>浏览器发送数据<br>服务器返回200 OK响应</p>
+<p>get的请求过程：<br>浏览器请求tcp连接（第一次握手）<br>服务器答应进行tcp连接（第二次握手）<br>浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）<br>服务器返回200 OK响应</p>
+<h4 id="误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。"><a href="#误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。" class="headerlink" title="误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。"></a>误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。</h4><p>我在网上查了查，千万不要被某些内容引导你。<br>GET和POST还有一个重大区别，简单的说：<br>GET产生一个TCP数据包；POST产生两个TCP数据包。<br>长的说：<br>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；<br>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。<br>这个结论是错误的。</p>
+<p><strong>而实际上，不论哪一种浏览器，在发送 POST 的时候都没有带 Expect 头，server 也自然不会发 100 continue。</strong><br><strong>通过抓包发现，尽管会分两次，body 就是紧随在 header 后面发送的，根本不存在『等待服务器响应』这一说。</strong><br>注：误区4观点参考网上大神结论。</p>
+<h4 id="误区5、get和post都符合安全性和幂等性"><a href="#误区5、get和post都符合安全性和幂等性" class="headerlink" title="误区5、get和post都符合安全性和幂等性"></a>误区5、get和post都符合安全性和幂等性</h4><p>幂等性：就是对数据库的操作次数，一次或者多次操作获得的结果是一样的，则认为符合幂等性。<br>安全性：对数据库的操作没有改变数据库中的数据，则认为符合安全性。</p>
+<p>从数据库层面来看，GET请求方式是做查询操作，因此不会改变数据库中原有的数据，认为符合安全性。事实上GET请求可能会出现多次请求的结果（例如在两次请求中间对数据库中的数据作了更改），从这来说是不符合幂等性的定义，但是因为GET请求知识查询数据库，不会对数据库做任何更改，因此也认为是幂等的。</p>
+<p>POST请求方式是既不幂等又不安全，首先POST请求方式往数据库中提交数据的，因此会改变数据库中的数据。其次，POST请求方式每次获得的结果都有可能不一样，因为POST请求是作用在上一级的URL上的，则每一次请求都会添加一份新资源（这也是POST和PUT方式的最大区别，PUT方式是幂等的）。</p>
 </the></excerpt>
       
     </div>
@@ -358,13 +405,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/05/05/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2020/04/29/Post-与-Get-的区别/">Post 与 Get 的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Phantoms007</a></p>
-        <p><span>发布时间:</span>2019-05-05, 17:08:43</p>
-        <p><span>最后更新:</span>2019-10-09, 09:29:06</p>
+        <p><span>发布时间:</span>2020-04-29, 18:00:00</p>
+        <p><span>最后更新:</span>2020-04-29, 17:56:08</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/05/05/hello-world/" title="Hello World">https://phantoms007.github.io/2019/05/05/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2019/05/05/hello-world/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/04/29/Post-与-Get-的区别/" title="Post 与 Get 的区别">https://phantoms007.github.io/2020/04/29/Post-与-Get-的区别/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://phantoms007.github.io/2020/04/29/Post-与-Get-的区别/　　作者: Phantoms007" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -376,16 +423,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/05/09/MySQL监控/">
-                    MySQL监控--初级入门
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/04/29/Windows下生成PDF/">
-                    生成复杂PDF-Windows篇
+                <a href="/2020/04/28/MySQL性能优化之骨灰级高阶神技/">
+                    MySQL性能优化之骨灰级高阶神技
                 </a>
             </div>
         
@@ -397,7 +438,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的Post-和-Get的区别"><span class="toc-number">1.</span> <span class="toc-text">常见的Post 和 Get的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见到的区别"><span class="toc-number">1.2.</span> <span class="toc-text">常见到的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#W3C上的总结"><span class="toc-number">1.3.</span> <span class="toc-text">W3C上的总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GET-方法："><span class="toc-number">1.3.1.</span> <span class="toc-text">GET 方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST-方法："><span class="toc-number">1.3.2.</span> <span class="toc-text">POST 方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比较GET与POST"><span class="toc-number">1.3.3.</span> <span class="toc-text">比较GET与POST:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见误区"><span class="toc-number">1.4.</span> <span class="toc-text">常见误区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#误区1、GET在URl中传递的参数是有长度限制的，而POST没有"><span class="toc-number">1.4.1.</span> <span class="toc-text">误区1、GET在URl中传递的参数是有长度限制的，而POST没有</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#误区2、POST比GET更安全"><span class="toc-number">1.4.2.</span> <span class="toc-text">误区2、POST比GET更安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#误区3、为什么GET比POST快"><span class="toc-number">1.4.3.</span> <span class="toc-text">误区3、为什么GET比POST快</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。"><span class="toc-number">1.4.4.</span> <span class="toc-text">误区4、GET产生一个TCP数据包；POST产生两个TCP数据包。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#误区5、get和post都符合安全性和幂等性"><span class="toc-number">1.4.5.</span> <span class="toc-text">误区5、get和post都符合安全性和幂等性</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -428,15 +469,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/05/09/MySQL监控/" title="上一篇: MySQL监控--初级入门">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/04/29/Windows下生成PDF/" title="下一篇: 生成复杂PDF-Windows篇">
+            <a href="/2020/04/28/MySQL性能优化之骨灰级高阶神技/" title="下一篇: MySQL性能优化之骨灰级高阶神技">
                 <i class="fa fa-angle-right"></i>
             </a>
         
