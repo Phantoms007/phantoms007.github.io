@@ -42,7 +42,7 @@
         "excerpt_len": "90",
         "tougao_on": "1",
         "tougao_page": "570",
-        "tougao_btn": "<i class=\"fa fa-edit\"><\\/i> 投稿",
+        "tougao_btn": "<i class=\"fa fa-edit\"></i> 投稿",
         "tougao_upload": "1",
         "special_on": "0",
         "special_slug": "special",
@@ -62,8 +62,8 @@
         "dashang_1_img": "",
         "dashang_2_title": "支付宝扫一扫",
         "dashang_2_img": "",
-        "copyright_default": "<p>主题测试文章，只做测试使用。发布者：%AUTHOR_NAME%，转转请注明出处：<span>%POST_URL%<\\/span><\\/p>",
-        "copyright_tougao": "<p>本文来自投稿，不代表%SITE_NAME%立场，如若转载，请注明出处：%POST_URL%<\\/p>",
+        "copyright_default": "<p>主题测试文章，只做测试使用。发布者：%AUTHOR_NAME%，转转请注明出处：<span>%POST_URL%</span></p>",
+        "copyright_tougao": "<p>本文来自投稿，不代表%SITE_NAME%立场，如若转载，请注明出处：%POST_URL%</p>",
         "copyright_id": [
             "type_1"
         ],
@@ -71,7 +71,7 @@
             "转载文章"
         ],
         "copyright_text": [
-            "<p>本文来自<span>%ORIGINAL_NAME%<\\/span>，经授权后发布，本文观点不代表%SITE_NAME%立场，转载请联系原作者。<\\/p>"
+            "<p>本文来自<span>%ORIGINAL_NAME%</span>，经授权后发布，本文观点不代表%SITE_NAME%立场，转载请联系原作者。</p>"
         ],
         "related_by": "0",
         "related_news": "相关推荐",
@@ -86,7 +86,7 @@
         "baidu_map_ak": "",
         "google_map_key": "",
         "action_top": "50%",
-        "contact_text": "<h4 style=\"text-align: center;\"><span style=\"color: #2d6ded;\"><strong>400-800-8888<\\/strong><\\/span><\\/h4>\r\n在线咨询：<a href=\"http:\\/\\/wpa.qq.com\\/msgrd?uin=1234567\" target=\"_blank\" rel=\"noopener\"><img class=\"alignnone\" title=\"点击这里给我发消息\" src=\"\\/\\/pub.idqqimg.com\\/qconn\\/wpa\\/button\\/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" \\/><\\/a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+        "contact_text": "<h4 style=\"text-align: center;\"><span style=\"color: #2d6ded;\"><strong>400-800-8888</strong></span></h4>\r\n在线咨询：<a href=\"http://wpa.qq.com/msgrd?uin=1234567\" target=\"_blank\" rel=\"noopener\"><img class=\"alignnone\" title=\"点击这里给我发消息\" src=\"//pub.idqqimg.com/qconn/wpa/button/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" /></a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
         "wechat": "",
         "share": "1",
         "footer_bar_icon": [
@@ -181,7 +181,7 @@
         "sidebar_name": [
             "边栏"
         ],
-        "footer_logo": "http:\\/\\/demo.wpcom.cn\\/justnews2\\/wp-content\\/uploads\\/sites\\/19\\/2019\\/07\\/logo-footer.png",
+        "footer_logo": "http://demo.wpcom.cn/justnews2/wp-content/uploads/sites/19/2019/07/logo-footer.png",
         "fticon_i": [
             "wechat",
             "weibo"
@@ -191,10 +191,10 @@
             "0"
         ],
         "fticon_u": [
-            "http:\\/\\/demo.wpcom.cn\\/justnews2\\/wp-content\\/uploads\\/sites\\/19\\/2019\\/07\\/qrcode_for_gh.jpg",
-            "https:\\/\\/weibo.com\\/iztme"
+            "http://demo.wpcom.cn/justnews2/wp-content/uploads/sites/19/2019/07/qrcode_for_gh.jpg",
+            "https://weibo.com/iztme"
         ],
-        "copyright": "Copyright © 2019 WPCOM 版权所有 <a href=\"http:\\/\\/www.miibeian.gov.cn\\/\" target=\"_blank\" rel=\"nofollow noopener\">粤ICP备000000000号<\\/a> Powered by <a href=\"https:\\/\\/www.wpcom.cn\" target=\"_blank\" rel=\"noopener\">WordPress<\\/a>",
+        "copyright": "Copyright © 2019 WPCOM 版权所有 <a href=\"http://www.miibeian.gov.cn/\" target=\"_blank\" rel=\"nofollow noopener\">粤ICP备000000000号</a> Powered by <a href=\"https://www.wpcom.cn\" target=\"_blank\" rel=\"noopener\">WordPress</a>",
         "tongji": "",
         "member_enable": "1",
         "member_group": "67",
