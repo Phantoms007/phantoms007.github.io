@@ -1,0 +1,547 @@
+{
+    "menu": {
+        "primary": "justnews-menu",
+        "footer": "justnews-footer-menu"
+    },
+    "widgets": {
+        "primary": {
+            "wpcom-profile-4": {
+                "number": 5
+            },
+            "wpcom-image-ad-2": {
+                "title": "WPCOM主题",
+                "image": "http://demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/2021032602420738.jpg",
+                "url": "https://www.wpcom.cn/, _blank"
+            },
+            "wpcom-post-thumb-2": {
+                "title": "最新发布",
+                "number": 10,
+                "category": 0,
+                "orderby": 0
+            },
+            "wpcom-comments-3": {
+                "title": "最新评论",
+                "number": 5
+            }
+        },
+        "sidebar_1": {
+            "wpcom-profile-3": {
+                "number": 5
+            },
+            "wpcom-post-thumb-3": {
+                "title": "最新文章",
+                "number": 10,
+                "category": 0
+            },
+            "wpcom-comments-5": {
+                "title": "最新评论",
+                "number": 5
+            }
+        },
+        "wenda": {
+            "qapress-new-2": {
+                "text": "<i class="fa fa-edit"></i> 我要提问",
+                "show": "0"
+            },
+            "qapress-related-2": {
+                "title": "相关问题",
+                "number": "6"
+            },
+            "qapress-list-2": {
+                "title": "热评帖子",
+                "number": "5",
+                "orderby": "1"
+            },
+            "wpcom-post-thumb-4": {
+                "title": "随便看看",
+                "number": "8",
+                "category": "0",
+                "orderby": "3",
+                "days": null
+            }
+        },
+        "sidebar_2": {
+            "wpcom-profile-5": {
+                "number": 5
+            },
+            "wpcom-post-thumb-5": {
+                "title": "最新文章",
+                "number": 10,
+                "category": 0,
+                "orderby": 0
+            }
+        },
+        "home": {
+            "wpcom-image-ad-3": {
+                "title": "WPCOM主题",
+                "image": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/2021032602420738.jpg",
+                "url": "https://www.wpcom.cn/, _blank"
+            },
+            "wpcom-kuaixun-2": {
+                "title": "快讯",
+                "number": "5"
+            },
+            "wpcom-post-tabs-2": {
+                "title": "",
+                "number": "6",
+                "label": [
+                    "热门",
+                    "热评",
+                    "最新",
+                    "随机"
+                ],
+                "icon": [
+                    "ri:fire-fill",
+                    "ri:chat-1-fill",
+                    "ri:time-fill",
+                    "ri:shuffle-fill"
+                ],
+                "category": [
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "order": [
+                    "2",
+                    "1",
+                    "0",
+                    "3"
+                ],
+                "days": [
+                    "0"
+                ],
+                "tabs": null
+            },
+            "wpcom-lastest-products-2": {
+                "title": "产品设计",
+                "number": 10,
+                "category": "5"
+            }
+        }
+    },
+    "show_on_front": "posts",
+    "options": {
+        "logo": "3598",
+        "logo-height": "36px",
+        "logo-height-mobile": "34px",
+        "fav": "//www.wpcom.cn/favicon.ico",
+        "show_indent": "0",
+        "tougao_on": "1",
+        "tougao_cats": [
+            "1",
+            "5",
+            "6",
+            "7"
+        ],
+        "tougao_btn": "",
+        "tougao_upload": "1",
+        "special_on": "1",
+        "special_slug": "special",
+        "special_per_page": "10",
+        "show_author": "1",
+        "dashang_display": "1",
+        "dashang_1_title": "微信扫一扫",
+        "dashang_1_img": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/05/wx.png",
+        "dashang_2_title": "支付宝扫一扫",
+        "dashang_2_img": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/05/wx.png",
+        "copyright_default": "<p>主题测试文章，只做测试使用。发布者：%AUTHOR_NAME%，转转请注明出处：<span>%POST_URL%</span></p>",
+        "copyright_tougao": "<p>本文来自投稿，不代表%SITE_NAME%立场，如若转载，请注明出处：%POST_URL%</p>",
+        "copyright_id": [
+            "type_1"
+        ],
+        "copyright_type": [
+            "转载文章"
+        ],
+        "copyright_text": [
+            "<p>本文转载自<span>%ORIGINAL_NAME%</span>，只做主题效果测试使用，本文观点不代表%SITE_NAME%立场。</p>"
+        ],
+        "image_shows": "12",
+        "image-fullwidth_shows": "16",
+        "list_shows": "18",
+        "related_news": "相关推荐",
+        "related_show_type": "",
+        "related_num": "5",
+        "comments_open": "1",
+        "remote_img_thumb": "1",
+        "lazyload_img": "",
+        "wx_appid": "",
+        "wx_appsecret": "",
+        "wx_desc": "",
+        "wx_thumb": "",
+        "action_top": "50%",
+        "contact_text": "<h4 style=\"text-align: center;\"><span style=\"color: #2d6ded;\"><strong>400-800-8888</strong></span></h4>\r\n在线咨询：<a href=\"http://wpa.qq.com/msgrd?uin=10000\" target=\"_blank\" rel=\"noopener noreferrer\"><img class=\"alignnone j-lazy\" title=\"点击这里给我发消息\" src=\"//pub.idqqimg.com/qconn/wpa/button/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" /></a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+        "wechat": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/qrcode_for_gh_d95d7581f6db_430-1.jpg",
+        "share": "1",
+        "footer_bar_icon": "",
+        "footer_bar_title": "",
+        "footer_bar_url": "",
+        "slider_img": [
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/banner4.jpg",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/banner2-1.jpg",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/banner1-2.jpg"
+        ],
+        "slider_title": [
+            "这是幻灯滑块的标题1",
+            "这是幻灯滑块的标题2",
+            "这是幻灯滑块的标题3"
+        ],
+        "slider_url": [
+            "http://demo.wpcom.cn/justnews/, _blank",
+            "http://demo.wpcom.cn/justnews/, _blank",
+            "http://demo.wpcom.cn/justnews/, _blank"
+        ],
+        "fea_img": [
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/5.1-1.jpg",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2020/09/pexels-bongkarn.png"
+        ],
+        "fea_title": [
+            "前端用户中心",
+            "专题列表"
+        ],
+        "fea_url": [
+            "http://demo.wpcom.cn/justnews/user/1, _blank",
+            "http://demo.wpcom.cn/justnews/special, _blank"
+        ],
+        "special_home_num": "4",
+        "special_home_title": "专题介绍",
+        "special_home_desc": "专题模块标题旁边的描述文字",
+        "special_home_url": "http://demo.wpcom.cn/justnews/special, _blank",
+        "cats_id": [
+            "5",
+            "1",
+            "7",
+            "6"
+        ],
+        "partner_title": "合作伙伴",
+        "partner_desc": "合作伙伴模块标题旁边的描述文字",
+        "partner_more_title": "联系我们",
+        "partner_more_url": "http://demo.wpcom.cn/justnews/contact, _blank",
+        "partner_img_width": "152",
+        "link_title": "友情链接",
+        "link_desc": "友情链接模块标题旁边的描述文字",
+        "link_more_title": "申请友链",
+        "link_more_url": "http://demo.wpcom.cn/justnews/contact, _blank",
+        "link_cat": "",
+        "ad_home_1": "",
+        "ad_home_2": "",
+        "ad_single_1": "",
+        "ad_single_2": "",
+        "pt_img": [
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/146855139223946982-1.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/146855361313664703.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/146855169275958886.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/146855173073.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/netease.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/360.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/didi.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/mt.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/sh.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/tt.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/ls.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/kd.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/lp.png",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/lg.png"
+        ],
+        "pt_title": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "pt_url": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "theme_color": "",
+        "theme_color_hover": "",
+        "profile_menu_title": "",
+        "profile_menu_url": "",
+        "list_img_right": "0",
+        "custom_css": "",
+        "sidebar_id": [
+            "sidebar_1",
+            "sidebar_2"
+        ],
+        "sidebar_name": [
+            "边栏",
+            "短页面"
+        ],
+        "footer_logo": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/10/logo-footer.png",
+        "ios": "//demo-src.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/下载.png",
+        "android": "//demo-src.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/下载.png",
+        "weixin": "//demo-src.wpcom.cn/justnews/wp-content/uploads/sites/8/2017/04/qrcode_for_gh_d95d7581f6db_430-1.jpg",
+        "weibo": "http://weibo.com/iztme",
+        "qq_weibo": "",
+        "facebook": "",
+        "twitter": "",
+        "google_plus": "",
+        "linkedin": "",
+        "youtube": "",
+        "instagram": "",
+        "pinterest": "",
+        "copyright": "Copyright © 2022 WPCOM 版权所有 <a href=\"https://beian.miit.gov.cn\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">粤ICP备000000000号</a> Powered by <a href=\"https://www.wpcom.cn\" target=\"_blank\" rel=\"noopener noreferrer\">WordPress</a>",
+        "seo": "1",
+        "home-title": "",
+        "keywords": "",
+        "description": "",
+        "title_sep_home": " - ",
+        "title_sep": "_",
+        "wafc_google": "-1",
+        "wafc_gravatar": "3",
+        "social_login_on": "0",
+        "social_login_page": "457",
+        "sl_wechat_id": "",
+        "sl_wechat_key": "",
+        "sl_sina_id": "",
+        "sl_sina_key": "",
+        "auto_check_update": "1",
+        "ad_home_1_mobile": "",
+        "ad_home_2_mobile": "",
+        "ad_single_1_mobile": "",
+        "ad_single_2_mobile": "",
+        "ad_flow": "",
+        "ad_flow_mobile": "",
+        "disable_emoji": "1",
+        "disable_rest": "1",
+        "tag_cloud_num": "30",
+        "post_img_lazyload": "1",
+        "post_img_alt": "1",
+        "save_remote_img": "1",
+        "thumb_img_lazyload": "1",
+        "file_upload_rename": "1",
+        "newest_exclude": "",
+        "auto_featured_image": "1",
+        "slide_speed": "5000",
+        "time_format": "1",
+        "related_by": "0",
+        "canonical": "1",
+        "bg_color": "",
+        "bg_image": "",
+        "bg_image_attachment": "0",
+        "bg_image_repeat": "no-repeat",
+        "bg_image_position": "center top",
+        "special_title_color": "#333",
+        "list_multimage": "",
+        "breadcrumb": "1",
+        "tougao_page": "29",
+        "member_enable": "1",
+        "member_group": "116",
+        "member_avatar": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg",
+        "member_cover": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/03/anthony-delanoix-urUdKCxsTUI-unsplash-1.jpg",
+        "member_user_slug": "2",
+        "member_page_register": "12",
+        "member_page_login": "10",
+        "member_page_lostpassword": "20",
+        "member_page_account": "18",
+        "member_page_profile": "8",
+        "member_reg_active": "0",
+        "member_reg_notice": "感谢注册我们的网站。我们已经给你发送了一封激活邮件，你需要点击邮件中的激活链接来激活你的帐号，激活完成后即可正常登录使用。",
+        "nc_appkey": "",
+        "nc_access_id": "",
+        "nc_access_secret": "",
+        "kx_on": "1",
+        "kx_slug": "kuaixun",
+        "mobile_share_logo": "2936",
+        "member_login_bg": "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2020/09/pexels-h-emre-773471-2.jpg",
+        "kx_page": "796",
+        "kx_url_enable": "0",
+        "post_img_lightbox": "1",
+        "xzh-render-head": "0",
+        "xzh-render-body": "1",
+        "auto_tag_link": "1",
+        "kl_keyword": "",
+        "kl_link": "",
+        "kl_title": "",
+        "remote_img_except": "wpcom.cn",
+        "post_metas": [
+            "v",
+            "c",
+            "h",
+            "z"
+        ],
+        "login_redirect": "",
+        "webp_suffix": "",
+        "post_video_height": "484px",
+        "enable_phone": "0",
+        "qcloud_sms_appid": "",
+        "qcloud_sms_appkey": "",
+        "qcloud_sms_tid": "",
+        "qcloud_sms_sign": "",
+        "member_captcha": "",
+        "tc_appid": "",
+        "tc_appkey": "",
+        "fticon_i": [
+            "fa:apple",
+            "fa:android",
+            "fa:weixin",
+            "fa:weibo"
+        ],
+        "fticon_t": [
+            "1",
+            "1",
+            "1",
+            "0"
+        ],
+        "fticon_u": [
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/04/qrcode_for_gh_d95d7581f6db_430.jpg",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/04/qrcode_for_gh_d95d7581f6db_430.jpg",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/04/qrcode_for_gh_d95d7581f6db_430.jpg",
+            "http://weibo.com/iztme, _blank, nofollow"
+        ],
+        "excerpt_len": "",
+        "footer_bar_type": "",
+        "google_map_key": "",
+        "login_modal": "1",
+        "more_special": "",
+        "latest_title": "",
+        "single_sidebar": "0",
+        "post_thumb": "",
+        "header_style": "0",
+        "header_bg": "#fff",
+        "header_bg2": "",
+        "bg_image_size": "2",
+        "el_boxed": "1",
+        "partner_img_cols": "7",
+        "footer_code": "",
+        "sticky_color": "{\"c1\":\"#3ca5f6\",\"c2\":\"#a86af9\",\"d\":0}",
+        "post_target": "_blank",
+        "head_code": "",
+        "post_shares": [
+            "wechat",
+            "weibo",
+            "qq",
+            "qzone"
+        ],
+        "sl_type": [],
+        "sl_id": [],
+        "sl_key": [],
+        "footer_bar_bg": "",
+        "footer_bar_color": "",
+        "material_icons": "0",
+        "iconfont": "",
+        "sms_login": "1",
+        "sms_api": "0",
+        "enable_cache": "1",
+        "member_desc": "这个人很懒，什么都没有留下～",
+        "member_follow": "1",
+        "member_messages": "1",
+        "user_card": "1",
+        "ad_single_0": "",
+        "ad_single_0_mobile": "",
+        "wp-proxy": "0",
+        "action_style": "0",
+        "action_cstyle": "1",
+        "action_color": "",
+        "action_bottom": "120px",
+        "action_pos": "1",
+        "action_title": [
+            "联系我们",
+            "关注微信"
+        ],
+        "action_icon": [
+            "fa:comments",
+            "fa:wechat"
+        ],
+        "action_type": [
+            "2",
+            "1"
+        ],
+        "action_target": [
+            "<h3 style=\"text-align: center;\">联系我们</h3>\r\n<h5 style=\"text-align: center;\"><span style=\"color: #2d6ded; font-size: 24px; line-height: 2;\"><strong>400-800-8888</strong></span></h5>\r\n在线咨询：<a class=\"btn btn-primary btn-xs\" href=\"http://wpa.qq.com/msgrd?uin=10000\" target=\"_blank\" rel=\"noopener noreferrer\"><i class=\"wpcom-icon fa fa-qq\"></i> QQ交谈</a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+            "//demo.wpcom.cn/justnews/wp-content/uploads/sites/8/2021/04/qrcode_for_gh_d95d7581f6db_430.jpg"
+        ],
+        "gotop": "1",
+        "zz-submit": "",
+        "ks-submit": "",
+        "mobile_share_ta": "1",
+        "mobile_share_ts": "0",
+        "member_notify": "1",
+        "member_page_terms": "",
+        "login_logo": "",
+        "fontawesome": "1",
+        "special_home_col": "4",
+        "css_cache": "1",
+        "top_news_bg": "{\"c1\":\"#206BE7\",\"c2\":\"#1E86FF\",\"d\":0}",
+        "top_news": "自6.2开始主题新增页头通知功能，购买用户可免费升级到最新版体验",
+        "remixicon": "1",
+        "thumb_default_width": "480",
+        "thumb_default_height": "300",
+        "thumb_width": "480",
+        "thumb_height": "300",
+        "post_nextprev": "1",
+        "filter_item_title": [
+            "分类筛选"
+        ],
+        "filter_item_id": [
+            "f1"
+        ],
+        "filter_items": "",
+        "sl_wechat_follow": "",
+        "sl_wechat2_aeskey": "",
+        "sl_wechat2_welc": {
+            "2": "登录成功！"
+        },
+        "open_graph": "1",
+        "filter_item_label": [
+            [
+                "分类",
+                "排序"
+            ]
+        ],
+        "filter_item_type": [
+            [
+                "0",
+                "2"
+            ]
+        ],
+        "filter_item_cats": [
+            [
+                "",
+                ""
+            ]
+        ],
+        "filter_item_attrs": [
+            [
+                "",
+                ""
+            ]
+        ],
+        "special_order": "0",
+        "sl_weapp_type": {
+            "1": ""
+        },
+        "social_login_target": "1",
+        "classic_widgets": "1",
+        "noindex_attachment": "1",
+        "special_home_style": "2",
+        "filter_item_count": [
+            "0"
+        ],
+        "static_cdn": "0",
+        "show_origin": "",
+        "scan_login": "0"
+    }
+}
