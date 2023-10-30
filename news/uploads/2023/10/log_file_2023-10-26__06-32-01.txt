@@ -1,0 +1,18 @@
+
+---已下载的文件---
+导入文件：风格1 已成功下载！
+初始最大执行时间  = 1200
+文件信息：
+网站地址 = http://www.std-wordpress.test
+数据文件 = D:\wwwroot\object\php\www.std-wordpress.test/wp-content/uploads/2023/10/demo-content-import-file_2023-10-26__06-32-01.xml
+小工具文件 = 未定义！
+自定义文件 = 未定义！
+Redux 文件：
+未定义！
+
+------
+AJAX 请求！
+
+
+---pt-ocdi/after_import---
+

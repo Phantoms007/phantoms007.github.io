@@ -1,0 +1,325 @@
+{
+    "menu": {
+        "primary": "module-11-menu"
+    },
+    "widgets": {
+        "primary": {
+            "nav_menu-4": {
+                "nav_menu": "%e5%85%b3%e4%ba%8e"
+            },
+            "wpcom-lastest-products-2": {
+                "title": "服务案例",
+                "number": 6,
+                "category": "3"
+            },
+            "wpcom-lastest-news-3": {
+                "title": "最新新闻",
+                "number": 5,
+                "category": "2"
+            }
+        },
+        "footer": {
+            "categories-3": {
+                "title": "分类",
+                "count": 0,
+                "hierarchical": 0,
+                "dropdown": 0
+            },
+            "pages-2": {
+                "title": "页面",
+                "sortby": "post_title",
+                "exclude": "269"
+            },
+            "nav_menu-2": {
+                "title": "关于",
+                "nav_menu": "%e5%85%b3%e4%ba%8e"
+            },
+            "nav_menu-3": {
+                "title": "主题",
+                "nav_menu": "%e4%b8%bb%e9%a2%98"
+            }
+        }
+    },
+    "show_on_front": "page",
+    "page_on_front": "module11",
+    "options": {
+        "logo": "670",
+        "logo-height": "38px",
+        "logo-height-mobile": "34",
+        "banner": "",
+        "product_shows": "12",
+        "product_cat_show_type": "p",
+        "product-fullwidth_shows": "12",
+        "product-fullwidth_cat_show_type": "p",
+        "enquiry_text": "在线咨询",
+        "enquiry_url": "",
+        "list_shows": "20",
+        "related_news": "相关新闻",
+        "related_product": "相关案例",
+        "related_show_type": "p",
+        "comments_open": "0",
+        "thumb_default_width": "480",
+        "thumb_default_height": "320",
+        "thumb_width": "480",
+        "thumb_height": "320",
+        "lazyload_img": "",
+        "baidu_map_ak": "",
+        "action_top": "50%",
+        "contact_text": "<h4 style=\"text-align: center;\"><span style=\"color: #2d6ded;\"><strong>400-800-8888</strong></span></h4>\r\n在线咨询：<a href=\"http://wpa.qq.com/msgrd?uin=12345\" target=\"_blank\" rel=\"noopener noreferrer\"><img class=\"alignnone\" title=\"点击这里给我发消息\" src=\"//pub.idqqimg.com/qconn/wpa/button/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" /></a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+        "wechat": "http://demo.wpcom.cn/module9/wp-content/uploads/sites/21/2019/05/qrcode.png",
+        "share": "1",
+        "footer_bar_icon": [
+            "fa:phone",
+            "fa:envelope",
+            "fa:qq",
+            "fa:map"
+        ],
+        "footer_bar_title": [
+            "电话",
+            "邮箱",
+            "QQ",
+            "地图"
+        ],
+        "footer_bar_url": [
+            "tel:02010010",
+            "mailto:service@xx.com",
+            "http://wpa.qq.com/msgrd?v=3&uin=10000&site=qq&menu=yes",
+            "http://j.map.baidu.com/hUrCk"
+        ],
+        "slider_abs": "1",
+        "slider_full": "1",
+        "slider_style": "0",
+        "slider_img": "",
+        "slider_url": "",
+        "service_title": "服务项目",
+        "service_center": "0",
+        "service_tt": "",
+        "service_desc": "",
+        "service_img": "",
+        "service_url": "",
+        "prod_title": "服务案例",
+        "prod_cat": "",
+        "prod_child": "0",
+        "prod_number": "8",
+        "prod_more": "0",
+        "prod_show_type": "p",
+        "fea_title": "为什么选择我们",
+        "fea_columns": "3",
+        "fea_tt": [
+            ""
+        ],
+        "fea_desc": [
+            ""
+        ],
+        "fea_icon": [
+            ""
+        ],
+        "fea_color": [
+            "#2cb663"
+        ],
+        "fea_url": [
+            ""
+        ],
+        "news_title": "新闻动态",
+        "news_cat": "",
+        "news_child": "1",
+        "news_number": "6",
+        "news_more": "1",
+        "map_pos": "",
+        "map_title": "",
+        "map_address": "",
+        "map_height": "400px",
+        "map_scrollWheelZoom": "0",
+        "theme_color": "#3E53D8",
+        "theme_color_hover": "#3E53D8",
+        "search": "1",
+        "sidebar_left": "1",
+        "custom_css": "",
+        "sidebar_id": [
+            "sidebar_1"
+        ],
+        "sidebar_name": [
+            "产品分类"
+        ],
+        "contact_title": "服务热线",
+        "contact_tel": "400-800-XXXX",
+        "contact_time": "客服服务时段：周一至周五，9:30 - 20:30，节假日休息",
+        "copyright": "Copyright © 2022 WPCOM 版权所有 <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">粤ICP备000000000号</a> Powered by <a href=\"https://www.wpcom.cn\" target=\"_blank\" rel=\"noopener noreferrer\">WordPress</a>",
+        "seo": "1",
+        "keywords": "",
+        "description": "",
+        "wafc_google": "1",
+        "wafc_gravatar": "3",
+        "auto_check_update": "1",
+        "fticon_i": [
+            "ri:wechat-fill",
+            "fa:weibo"
+        ],
+        "fticon_t": [
+            "1",
+            "0"
+        ],
+        "fticon_u": [
+            "//demo.wpcom.cn/module11/wp-content/uploads/sites/23/2020/05/qrcode.jpg",
+            "http://weibo.com/iztme, _blank, nofollow"
+        ],
+        "logo2": "671",
+        "enable_banner": "1",
+        "slide_speed": "5000",
+        "single_sidebar": "0",
+        "product_single_tpl": "2",
+        "related_by": "0",
+        "related_num": "10",
+        "related_num2": "6",
+        "wx_appid": "",
+        "wx_appsecret": "",
+        "wx_desc": "",
+        "wx_thumb": "",
+        "google_map_key": "",
+        "footer_bar_type": [
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "slider_alt": "",
+        "menu_location": "1",
+        "menu_item_margin": "30px",
+        "footer_style": "0",
+        "member_enable": "",
+        "enable_phone": "",
+        "member_avatar": "",
+        "login_redirect": "",
+        "member_page_register": "",
+        "member_page_login": "",
+        "member_page_lostpassword": "",
+        "member_page_account": "",
+        "member_login_bg": "",
+        "member_captcha": "0",
+        "member_reg_active": "",
+        "member_reg_notice": "感谢注册我们的网站。我们已经给你发送了一封激活邮件，你需要点击邮件中的激活链接来激活你的帐号，激活完成后即可正常登录使用。",
+        "profile_menu_title": "",
+        "profile_menu_url": "",
+        "nc_appkey": "",
+        "nc_access_id": "",
+        "nc_access_secret": "",
+        "tc_appid": "",
+        "tc_appkey": "",
+        "qcloud_sms_appid": "",
+        "qcloud_sms_appkey": "",
+        "qcloud_sms_tid": "",
+        "qcloud_sms_sign": "",
+        "social_login_on": "",
+        "social_login_page": "",
+        "sl_qq_id": "",
+        "sl_qq_key": "",
+        "sl_wechat_id": "",
+        "sl_wechat_key": "",
+        "sl_wechat2_id": "",
+        "sl_wechat2_key": "",
+        "sl_weibo_id": "",
+        "sl_weibo_key": "",
+        "canonical": "1",
+        "home-title": "",
+        "title_sep_home": " | ",
+        "title_sep": " | ",
+        "xzh-appid": "",
+        "xzh-submit": "",
+        "xzh-render-head": "0",
+        "xzh-render-body": "1",
+        "auto_tag_link": "0",
+        "kl_keyword": "",
+        "kl_link": "",
+        "kl_title": "",
+        "disable_emoji": "1",
+        "disable_rest": "1",
+        "thumb_img_lazyload": "1",
+        "webp_suffix": "",
+        "file_upload_rename": "1",
+        "tag_cloud_num": "30",
+        "auto_featured_image": "1",
+        "post_img_lazyload": "1",
+        "post_img_lightbox": "1",
+        "post_img_alt": "1",
+        "save_remote_img": "0",
+        "remote_img_except": "",
+        "footer_code": "",
+        "post_target": "_blank",
+        "login_modal": "",
+        "head_code": "",
+        "action_style": "1",
+        "action_cstyle": "1",
+        "action_color": "",
+        "action_bottom": "20%",
+        "action_pos": "0",
+        "action_title": [
+            "联系我们",
+            "关注微信"
+        ],
+        "action_icon": [
+            "ri:chat-smile-2-fill",
+            "ri:wechat-fill"
+        ],
+        "action_type": [
+            "2",
+            "1"
+        ],
+        "action_target": [
+            "<h3 style=\"text-align: center;\">联系我们</h3>\r\n<h5 style=\"text-align: center;\"><span style=\"color: #1764ff; font-size: 20px;\"><strong>888-888-8888</strong></span></h5>\r\n在线咨询：<a href=\"http://wpa.qq.com/msgrd?uin=10000\" target=\"_blank\" rel=\"noopener noreferrer\"><img class=\"alignnone j-lazy\" title=\"点击这里给我发消息\" src=\"//pub.idqqimg.com/qconn/wpa/button/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" /></a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+            "//demo.wpcom.cn/module11/wp-content/uploads/sites/23/2020/05/qrcode.jpg"
+        ],
+        "gotop": "1",
+        "footer_bar_bg": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "footer_bar_color": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "material_icons": "0",
+        "iconfont": "",
+        "zz-submit": "",
+        "ks-submit": "",
+        "enable_cache": "1",
+        "wp-proxy": "1",
+        "fontawesome": "1",
+        "sec-title-style": "2",
+        "contact_btn": "咨询在线客服",
+        "contact_btn_url": "",
+        "member_page_terms": "",
+        "login_logo": "",
+        "sec-title-font": "0",
+        "css_cache": "0",
+        "top_news_bg": "",
+        "top_news": "",
+        "header_fluid": "0",
+        "banner_style": "1",
+        "remixicon": "1",
+        "banner_color": "0",
+        "menu_hover": "",
+        "sms_login": "0",
+        "sms_api": "0",
+        "aliyun_sms_keyid": "",
+        "aliyun_sms_secret": "",
+        "aliyun_sms_tcode": "",
+        "aliyun_sms_sign": "",
+        "sl_type": "",
+        "sl_id": "",
+        "sl_key": "",
+        "product_attr_id": "",
+        "product_attr_tpl": "",
+        "product_attrs": "",
+        "filter_item_title": "",
+        "filter_item_id": "",
+        "filter_items": "",
+        "open_graph": "1",
+        "noindex_attachment": "1",
+        "classic_widgets": "1",
+        "static_cdn": "0"
+    }
+}

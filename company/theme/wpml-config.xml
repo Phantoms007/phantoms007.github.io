@@ -1,0 +1,6 @@
+<wpml-config>
+    <admin-texts>
+        <key name="date_format"/>
+        <key name="time_format"/>
+    </admin-texts>
+</wpml-config>

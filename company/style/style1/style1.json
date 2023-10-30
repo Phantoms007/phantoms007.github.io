@@ -1,0 +1,389 @@
+{
+    "menu": {
+        "primary": "module-menu"
+    },
+    "widgets": {
+        "primary": {
+            "wpcom-lastest-products-2": {
+                "title": "服务案例",
+                "number": "6",
+                "category": "6",
+                "orderby": "0",
+                "days": null
+            },
+            "wpcom-lastest-news-2": {
+                "title": "新闻动态",
+                "number": 5,
+                "category": "1"
+            }
+        },
+        "footer": {
+            "categories-3": {
+                "title": "分类",
+                "count": 0,
+                "hierarchical": 0,
+                "dropdown": 0
+            },
+            "pages-2": {
+                "title": "页面",
+                "sortby": "post_title",
+                "exclude": "2"
+            },
+            "nav_menu-2": {
+                "title": "关于",
+                "nav_menu": "%e5%85%b3%e4%ba%8e"
+            },
+            "nav_menu-3": {
+                "title": "主题",
+                "nav_menu": "%e4%b8%bb%e9%a2%98"
+            }
+        }
+    },
+    "show_on_front": "posts",
+    "options": {
+        "logo": "309",
+        "logo-height": "36px",
+        "logo-height-mobile": "32px",
+        "fav": "284",
+        "banner": "",
+        "product_shows": "12",
+        "product_cat_show_type": "p",
+        "product-fullwidth_shows": "12",
+        "product-fullwidth_cat_show_type": "p",
+        "product_single_tpl": "0",
+        "enquiry_text": "在线咨询",
+        "enquiry_url": "",
+        "list_shows": "20",
+        "related_news": "相关新闻",
+        "related_product": "相关产品",
+        "related_show_type": "p",
+        "comments_open": "0",
+        "thumb_default_width": "480",
+        "thumb_default_height": "320",
+        "thumb_width": "480",
+        "thumb_height": "320",
+        "remote_img_thumb": "1",
+        "lazyload_img": "",
+        "wx_appid": "",
+        "wx_appsecret": "",
+        "wx_desc": "",
+        "wx_thumb": "314",
+        "baidu_map_ak": "",
+        "action_top": "50%",
+        "wechat": "//demo.wpcom.cn/module/wp-content/uploads/sites/5/2016/12/chart.png",
+        "share": "1",
+        "footer_bar_icon": [
+            "fa:phone",
+            "fa:weixin",
+            "fa:qq",
+            "fa:map"
+        ],
+        "footer_bar_title": [
+            "电话",
+            "微信",
+            "QQ",
+            "地图"
+        ],
+        "footer_bar_url": [
+            "tel:02010000",
+            "http://demo.wpcom.cn/module/wp-content/uploads/sites/5/2020/05/qrcode.jpg",
+            "http://wpa.qq.com/msgrd?v=3&uin=10000&site=qq&menu=yes",
+            "http://j.map.baidu.com/hUrCk"
+        ],
+        "slider_abs": "1",
+        "slider_full": "1",
+        "slider_style": "0",
+        "slider_img": [
+            "http://demo.wpcom.cn/module/wp-content/uploads/sites/5/2021/12/austin-distel-h1RW-NFtUyc-unsplash-1.jpg",
+            "http://demo.wpcom.cn/module/wp-content/uploads/sites/5/2021/12/linkedin-sales-solutions-i1MXZuHqD2k-unsplash-1.jpg"
+        ],
+        "slider_url": [
+            "",
+            ""
+        ],
+        "service_title": "服务项目",
+        "service_center": "0",
+        "service_tt": [
+            "商业主题出售",
+            "高端主题定制开发",
+            "企业网站运维",
+            "服务器租用购买"
+        ],
+        "service_desc": [
+            "这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容",
+            "这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容",
+            "这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容",
+            "这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容这是一段介绍内容"
+        ],
+        "service_img": [
+            "//demo.wpcom.cn/module/wp-content/uploads/sites/5/2016/12/s1.png",
+            "//demo.wpcom.cn/module/wp-content/uploads/sites/5/2016/12/s2.png",
+            "//demo.wpcom.cn/module/wp-content/uploads/sites/5/2021/12/jaron-mobley-M50WlgWP8p0-unsplash-1.png",
+            "//demo.wpcom.cn/module/wp-content/uploads/sites/5/2016/12/s4.png"
+        ],
+        "service_url": [
+            "https://www.wpcom.cn",
+            "https://www.wpcom.cn",
+            "https://www.wpcom.cn",
+            "https://www.wpcom.cn"
+        ],
+        "prod_title": "服务案例",
+        "prod_cat": "6",
+        "prod_child": "0",
+        "prod_number": "8",
+        "prod_more": "0",
+        "prod_show_type": "s",
+        "fea_title": "为什么选择我们",
+        "fea_columns": "3",
+        "fea_tt": [
+            "专业开发团队",
+            "便捷设置管理",
+            "自动SEO优化",
+            "前沿设计风格",
+            "使用技术支持",
+            "长久免费使用"
+        ],
+        "fea_desc": [
+            "我们的团队成员均来自于互联网行业，并且有着多年的开发经验，熟悉网站的开发流程，对于WordPress网站设计开发有着丰富的经验。",
+            "独立自主开发的WordPress后台设置管理面板，可以方便快捷的设置你的网站，即使不懂代码也可以随心所欲的修改主题自定义选项。",
+            "在开发过程中我们非常注重搜索引擎的优化，并借助WP平台的SEO优势，可以不需要任何插件即可实现自动提取生成页面关键词和描述。",
+            "我们时刻关注前沿设计风格，紧跟行业趋势，无论响应式还是扁平化，这些我们都能轻松的搞定！选择我们，让你的网站永不落伍！",
+            "主题购买后可享受免费半年的使用技术支持服务，对主题使用有任何问题可通过在线客服、提交服务单等方式联系我们，为您排除使用难题。",
+            "购买任意WP主题都可获得长久免费使用权，即一次付费后可以一直使用，摆脱传统建站按年收费的方式，避免网站因续费问题无法访问的尴尬。"
+        ],
+        "fea_icon": [
+            "if:zhuanyekaifatuandui",
+            "if:ArtboardCopy4",
+            "if:nienianSEOmeihuayi",
+            "if:jicaobucongjuanliangzhizi",
+            "if:shiyongjishuzhichi",
+            "if:yongjiumianfeishengji"
+        ],
+        "fea_color": [
+            "#2cb663",
+            "#f4b329",
+            "#f96c6c",
+            "#bd72d9",
+            "#249cfa",
+            "#0acfd7"
+        ],
+        "fea_url": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "news_title": "新闻动态",
+        "news_cat": "1",
+        "news_child": "1",
+        "news_number": "6",
+        "news_more": "1",
+        "map_pos": "",
+        "map_title": "",
+        "map_address": "",
+        "map_height": "",
+        "map_scrollWheelZoom": "0",
+        "theme_color": "#2F54EB",
+        "theme_color_hover": "#2A4FD6",
+        "menu_location": "1",
+        "search": "1",
+        "profile_menu_title": "",
+        "profile_menu_url": "",
+        "sidebar_left": "1",
+        "custom_css": "",
+        "sidebar_id": [
+            "sidebar_1"
+        ],
+        "sidebar_name": [
+            "产品分类"
+        ],
+        "footer_style": "0",
+        "contact_title": "服务热线",
+        "contact_tel": "400-800-XXXX",
+        "contact_time": "客服服务时段：周一至周五，9:30 - 20:30，节假日休息",
+        "facebook": "",
+        "twitter": "",
+        "google_plus": "",
+        "linkedin": "",
+        "youtube": "",
+        "instagram": "",
+        "pinterest": "",
+        "copyright": "Copyright © 2022 WPCOM 版权所有 <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">粤ICP备000000000号</a> Powered by <a href=\"https://www.wpcom.cn\" target=\"_blank\" rel=\"noopener noreferrer\">WordPress</a>",
+        "seo": "1",
+        "home-title": "",
+        "keywords": "Module主题,Module主题演示",
+        "description": "Module是一款多功能的wordpress主题，正如其名字一样，我们首次将首页所有内容全部模块化，并可配合我们Themer框架的可视化工具实现模块的自由拖拽组合，构建不同风格的网站",
+        "title_sep_home": " | ",
+        "title_sep": " | ",
+        "wafc_google": "-1",
+        "wafc_gravatar": "3",
+        "auto_check_update": "1",
+        "enable_banner": "1",
+        "disable_emoji": "1",
+        "disable_rest": "1",
+        "tag_cloud_num": "30",
+        "post_img_lazyload": "1",
+        "post_img_alt": "1",
+        "save_remote_img": "0",
+        "slider_alt": [
+            "",
+            ""
+        ],
+        "thumb_img_lazyload": "1",
+        "file_upload_rename": "1",
+        "related_by": "0",
+        "auto_featured_image": "1",
+        "slide_speed": "5000",
+        "canonical": "1",
+        "logo2": "",
+        "menu_item_margin": "30px",
+        "member_enable": "0",
+        "member_avatar": "",
+        "member_page_register": "",
+        "member_page_login": "",
+        "member_page_lostpassword": "",
+        "member_page_account": "",
+        "member_reg_active": "0",
+        "member_reg_notice": "感谢注册我们的网站。我们已经给你发送了一封激活邮件，你需要点击邮件中的激活链接来激活你的帐号，激活完成后即可正常登录使用。",
+        "nc_appkey": "",
+        "nc_access_id": "",
+        "nc_access_secret": "",
+        "social_login_on": "0",
+        "social_login_page": "",
+        "sl_qq_id": "",
+        "sl_qq_key": "",
+        "sl_wechat_id": "",
+        "sl_wechat_key": "",
+        "sl_wechat2_id": "",
+        "sl_wechat2_key": "",
+        "sl_weibo_id": "",
+        "sl_weibo_key": "",
+        "post_img_lightbox": "1",
+        "xzh-render-head": "0",
+        "xzh-render-body": "1",
+        "auto_tag_link": "0",
+        "kl_keyword": "",
+        "kl_link": "",
+        "kl_title": "",
+        "login_redirect": "",
+        "enable_phone": "",
+        "member_captcha": "",
+        "tc_appid": "",
+        "tc_appkey": "",
+        "qcloud_sms_appid": "",
+        "qcloud_sms_appkey": "",
+        "qcloud_sms_tid": "",
+        "qcloud_sms_sign": "",
+        "fticon_i": [
+            "fa:weixin",
+            "fa:weibo"
+        ],
+        "fticon_t": [
+            "1",
+            "0"
+        ],
+        "fticon_u": [
+            "http://demo.wpcom.cn/module/wp-content/uploads/sites/5/2020/05/qrcode.jpg",
+            "http://weibo.com/iztme"
+        ],
+        "related_num": "",
+        "related_num2": "",
+        "footer_bar_type": [
+            "0",
+            "1",
+            "0",
+            "0"
+        ],
+        "google_map_key": "",
+        "single_sidebar": "0",
+        "post_target": "",
+        "login_modal": "",
+        "member_login_bg": "",
+        "head_code": "",
+        "action_style": "1",
+        "action_cstyle": "1",
+        "action_color": "",
+        "action_bottom": "20%",
+        "action_pos": "0",
+        "action_title": [
+            "联系我们",
+            "关注微信"
+        ],
+        "action_icon": [
+            "fa:comments",
+            "fa:wechat"
+        ],
+        "action_type": [
+            "2",
+            "1"
+        ],
+        "action_target": [
+            "<h3 style=\"text-align: center;\">联系我们</h3>\r\n<h5 style=\"text-align: center;\"><span style=\"color: #1e87f7; font-size: 20px;\"><strong>888-888-8888</strong></span></h5>\r\n在线咨询：<a href=\"http://wpa.qq.com/msgrd?uin=10000\" target=\"_blank\" rel=\"noopener noreferrer\"><img class=\"alignnone j-lazy\" title=\"点击这里给我发消息\" src=\"//pub.idqqimg.com/qconn/wpa/button/button_111.gif\" alt=\"点击这里给我发消息\" border=\"0\" /></a>\r\n\r\n邮件：admin@example.com\r\n\r\n工作时间：周一至周五，9:30-18:30，节假日休息",
+            "http://demo.wpcom.cn/module/wp-content/uploads/sites/5/2020/05/qrcode.jpg"
+        ],
+        "gotop": "1",
+        "footer_bar_bg": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "footer_bar_color": [
+            "",
+            "",
+            "",
+            ""
+        ],
+        "material_icons": "0",
+        "iconfont": "//at.alicdn.com/t/font_2133257_jbw783badq8.js",
+        "zz-submit": "",
+        "ks-submit": "",
+        "enable_cache": "1",
+        "wp-proxy": "1",
+        "fontawesome": "1",
+        "sec-title-style": "3",
+        "contact_btn": "咨询在线客服",
+        "contact_btn_url": "",
+        "member_page_terms": "",
+        "login_logo": "",
+        "sec-title-font": "0",
+        "css_cache": "1",
+        "top_news_bg": "",
+        "top_news": "",
+        "header_fluid": "0",
+        "banner_style": "0",
+        "remixicon": "0",
+        "menu_hover": "",
+        "product_attr_id": [
+            "p_id"
+        ],
+        "product_attr_tpl": [
+            "测试模板"
+        ],
+        "product_attrs": "",
+        "filter_item_title": "",
+        "filter_item_id": "",
+        "filter_items": "",
+        "open_graph": "1",
+        "noindex_attachment": "1",
+        "classic_widgets": "1",
+        "static_cdn": "0",
+        "product_attr_name": [
+            [
+                "break",
+                "color",
+                "title"
+            ]
+        ],
+        "product_attr_val": [
+            [
+                "word",
+                "",
+                ""
+            ]
+        ],
+        "filter_item_count": ""
+    }
+}
